@@ -13,4 +13,16 @@ declare module 'amazeui-react' {
     export var ScrollSpy: any;
     export var PopoverTrigger: any;
     export var Popover: any;
+    export var Topbar: any;
+    export var CollapsibleNav: any;
+    export var Nav: any;
+    export var NavItem: any;
+    export var Icon: any;
+    export var Badge: any;
+    export var Dropdown;
+    export var Progress: any;
+    export var ButtonGroup: any;
+    export var ButtonToolbar: any;
+    export var Table: any;
+    export var Panel: any;
 }
