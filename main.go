@@ -1,0 +1,54 @@
+package main
+
+import (
+	"github.com/astaxie/beego"
+	"github.com/astaxie/beego/orm"
+	_ "github.com/lib/pq"
+	"github.com/thanzen/migrate/migrate"
+	"gitlab.com/thanzen/eq/controllers"
+	"gitlab.com/thanzen/eq/services"
+	"gitlab.com/thanzen/eq/setting"
+)
+
+func main() {
+	setting.Initialize()
+	beego.SetLogFuncCall(true)
+	beego.SetViewsPath("views")
+
+	if setting.IsProMode {
+		beego.Info("Product mode enabled")
+		beego.Info(setting.PostgresMigrateConnection)
+		//auto migrate db
+		//todo: we may want to disable this later
+		dbMigrate()
+	} else {
+		beego.Info("Develment mode enabled")
+	}
+	beego.Info(beego.AppName, setting.APP_VER, setting.AppUrl)
+
+	//dev directory listing
+	if !setting.IsProMode {
+		beego.SetStaticPath("/dev", "static")
+		beego.DirectoryIndex = true
+	}
+	orm.RegisterDriver("postgres", orm.DR_Postgres)
+
+	orm.RegisterDataBase("default", "postgres", setting.PostgresConnection)
+	services.Register()
+	orm.RunCommand()
+	orm.Debug = true
+
+	controllers.RegisterControllers()
+
+	if beego.RunMode == "dev" {
+		//	beego.Router("/test/:tmpl(mail/.*)", new(base.TestRouter))
+	}
+	beego.Run()
+}
+func dbMigrate() {
+	allErrors, ok := migrate.UpSync(setting.PostgresMigrateConnection, "./conf/db/migrations")
+	if !ok {
+		beego.Error(allErrors)
+	}
+
+}

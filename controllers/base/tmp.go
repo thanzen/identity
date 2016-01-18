@@ -1,0 +1,15 @@
+package base
+
+import (
+"gitlab.com/thanzen/eq/services/email"
+)
+
+type TestRouter struct {
+    BaseController
+}
+
+func (this *TestRouter) Get() {
+    this.TplNames = this.GetString(":tmpl")
+    this.Data = email.GetMailTmplData(this.Locale.Lang, &this.User)
+    this.Data["Code"] = "CODE"
+}
