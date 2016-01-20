@@ -2,10 +2,10 @@ package controllers
 
 import (
 	"github.com/astaxie/beego"
-	userApi "gitlab.com/thanzen/eq/controllers/api/user"
-	"gitlab.com/thanzen/eq/controllers/user"
-	"gitlab.com/thanzen/eq/setting"
-	"gitlab.com/thanzen/eq/controllers/experiment"
+	userApi "gitlab.com/thanzen/identity/controllers/api/user"
+	"gitlab.com/thanzen/identity/controllers/user"
+	"gitlab.com/thanzen/identity/setting"
+	"gitlab.com/thanzen/identity/controllers/experiment"
 )
 
 func RegisterControllers() {

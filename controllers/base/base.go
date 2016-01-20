@@ -13,10 +13,10 @@ import (
 	"github.com/beego/i18n"
 
 	"github.com/astaxie/beego/utils/pagination"
-	"gitlab.com/thanzen/eq/models/user"
-	userServ "gitlab.com/thanzen/eq/services/user"
-	"gitlab.com/thanzen/eq/setting"
-	"gitlab.com/thanzen/eq/utils"
+	"gitlab.com/thanzen/identity/models/user"
+	userServ "gitlab.com/thanzen/identity/services/user"
+	"gitlab.com/thanzen/identity/setting"
+	"gitlab.com/thanzen/identity/utils"
     "github.com/astaxie/beego/session"
     "github.com/astaxie/beego/context"
 )

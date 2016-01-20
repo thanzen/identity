@@ -5,9 +5,9 @@ package user
 //todo: swagger support
 import (
 	"encoding/json"
-	"gitlab.com/thanzen/eq/conf/permissions"
-	"gitlab.com/thanzen/eq/controllers/base"
-	"gitlab.com/thanzen/eq/models/user"
+	"gitlab.com/thanzen/identity/conf/permissions"
+	"gitlab.com/thanzen/identity/controllers/base"
+	"gitlab.com/thanzen/identity/models/user"
 )
 
 type AdminApiController struct {

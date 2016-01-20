@@ -3,10 +3,10 @@ package user
 import (
 	"strings"
 
-	"gitlab.com/thanzen/eq/controllers/base"
-	"gitlab.com/thanzen/eq/models/user"
-	"gitlab.com/thanzen/eq/setting"
-	"gitlab.com/thanzen/eq/utils"
+	"gitlab.com/thanzen/identity/controllers/base"
+	"gitlab.com/thanzen/identity/models/user"
+	"gitlab.com/thanzen/identity/setting"
+	"gitlab.com/thanzen/identity/utils"
 )
 
 // AuthController serves login page.

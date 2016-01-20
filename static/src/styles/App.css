@@ -1,21 +1,27 @@
 /* Base Application Styles */
-body {
-  color: #fff;
-  background: #222;
+.am-topbar{
+  background: #5D737E;
 }
+body{
+  background: #64b6ac;
+  background-size: 400% 400%;
 
-.index img {
-  margin: 40px auto;
-  border-radius: 4px;
-  background: #fff;
-  display: block;
+  /*-webkit-animation: BackGroundColorAnimation 15s ease infinite;
+  -moz-animation: BackGroundColorAnimation 15s ease infinite;
+  animation: BackGroundColorAnimation 15s ease infinite;*/
 }
-
-.index .notice {
-  margin: 20px auto;
-  padding: 15px 0;
-  text-align: center;
-  border: 1px solid #000;
-  border-width: 1px 0;
-  background: #666;
+@-webkit-keyframes BackGroundColorAnimation {
+    0%{background-position:0% 50%}
+    50%{background-position:100% 50%}
+    100%{background-position:0% 50%}
+}
+@-moz-keyframes BackGroundColorAnimation {
+    0%{background-position:0% 50%}
+    50%{background-position:100% 50%}
+    100%{background-position:0% 50%}
+}
+@keyframes BackGroundColorAnimation {
+    0%{background-position:0% 50%}
+    50%{background-position:100% 50%}
+    100%{background-position:0% 50%}
 }

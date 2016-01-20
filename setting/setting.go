@@ -10,7 +10,7 @@ import (
 	//"github.com/beego/social-auth/apps"
 	"fmt"
 	"github.com/howeyc/fsnotify"
-	"gitlab.com/thanzen/eq/cachemanager"
+	"gitlab.com/thanzen/identity/cachemanager"
 	"net/url"
 	"os"
 	"path/filepath"

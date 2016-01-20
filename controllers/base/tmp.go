@@ -1,7 +1,7 @@
 package base
 
 import (
-"gitlab.com/thanzen/eq/services/email"
+"gitlab.com/thanzen/identity/services/email"
 )
 
 type TestRouter struct {

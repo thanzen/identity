@@ -5,9 +5,9 @@ import (
 	"github.com/astaxie/beego/orm"
 	_ "github.com/lib/pq"
 	"github.com/thanzen/migrate/migrate"
-	"gitlab.com/thanzen/eq/controllers"
-	"gitlab.com/thanzen/eq/services"
-	"gitlab.com/thanzen/eq/setting"
+	"gitlab.com/thanzen/identity/controllers"
+	"gitlab.com/thanzen/identity/services"
+	"gitlab.com/thanzen/identity/setting"
 )
 
 func main() {

@@ -25,4 +25,5 @@ declare module 'amazeui-react' {
     export var ButtonToolbar: any;
     export var Table: any;
     export var Panel: any;
+    export var ScrollSpyNav: any;
 }

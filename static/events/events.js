@@ -1,3 +1,4 @@
+"use strict";
 var EventEmitter = (function () {
     function EventEmitter() {
         this.registry = {};
@@ -16,22 +17,18 @@ var EventEmitter = (function () {
     EventEmitter.prototype.removeListener = function (name, fn) {
         if (!this.registry[name])
             return;
-        this.registry[name] = this.registry[name].filter(function (f) {
-            return f != fn;
-        });
+        this.registry[name] = this.registry[name].filter(function (f) { return f != fn; });
     };
     EventEmitter.prototype.addListener = function (name, fn) {
         if (!this.registry[name]) {
-            this.registry[name] = [
-                fn
-            ];
+            this.registry[name] = [fn];
         }
         else {
             this.registry[name].push(fn);
         }
     };
     return EventEmitter;
-})();
+}());
 exports.EventEmitter = EventEmitter;
 var PubSub;
 (function (PubSub) {
@@ -49,9 +46,7 @@ var PubSub;
     };
     PubSub.Sub = function (name, fn) {
         if (!registry[name]) {
-            registry[name] = [
-                fn
-            ];
+            registry[name] = [fn];
         }
         else {
             registry[name].push(fn);

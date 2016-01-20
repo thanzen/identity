@@ -2,8 +2,8 @@ package user
 
 import (
 	//"github.com/astaxie/beego"
-	"gitlab.com/thanzen/eq/controllers/base"
-	"gitlab.com/thanzen/eq/models/user"
+	"gitlab.com/thanzen/identity/controllers/base"
+	"gitlab.com/thanzen/identity/models/user"
 )
 
 type UserController struct {

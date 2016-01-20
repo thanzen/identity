@@ -2,9 +2,9 @@ package user
 
 import (
 	"github.com/astaxie/beego/orm"
-	"gitlab.com/thanzen/eq/cachemanager"
-	"gitlab.com/thanzen/eq/models/user"
-	. "gitlab.com/thanzen/eq/services"
+	"gitlab.com/thanzen/identity/cachemanager"
+	"gitlab.com/thanzen/identity/models/user"
+	. "gitlab.com/thanzen/identity/services"
 )
 
 const ROLE_ALL_KEY = "eq_role_all"

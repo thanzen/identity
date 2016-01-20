@@ -8,7 +8,7 @@ import (
 	"path/filepath"
 	"strings"
     "github.com/astaxie/beego/orm"
-    "gitlab.com/thanzen/eq/services"
+    "gitlab.com/thanzen/identity/services"
 )
 
 func TestInitializeTestingDatabase(path string) {

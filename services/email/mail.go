@@ -2,8 +2,8 @@ package email
 
 import (
 	"github.com/astaxie/beego"
-	"gitlab.com/thanzen/eq/models/user"
-	"gitlab.com/thanzen/eq/setting"
+	"gitlab.com/thanzen/identity/models/user"
+	"gitlab.com/thanzen/identity/setting"
 )
 
 // Create New mail message use MailFrom and MailUser

@@ -26,7 +26,7 @@ import (
 	"github.com/astaxie/beego"
 	"github.com/astaxie/beego/validation"
 
-	"gitlab.com/thanzen/eq/setting"
+	"gitlab.com/thanzen/identity/setting"
 )
 
 func init() {

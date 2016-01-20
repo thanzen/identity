@@ -2,8 +2,8 @@ package user
 
 import (
     "github.com/astaxie/beego/orm"
-    "gitlab.com/thanzen/eq/models/user"
-    . "gitlab.com/thanzen/eq/services"
+    "gitlab.com/thanzen/identity/models/user"
+    . "gitlab.com/thanzen/identity/services"
 )
 
 type PermissionService struct {

@@ -26,7 +26,7 @@ import (
 	"github.com/astaxie/beego"
 	"github.com/beego/i18n"
 
-	"gitlab.com/thanzen/eq/setting"
+	"gitlab.com/thanzen/identity/setting"
 )
 
 // get HTML i18n string

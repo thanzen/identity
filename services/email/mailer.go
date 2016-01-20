@@ -7,7 +7,7 @@ import (
 
 	"github.com/astaxie/beego"
 
-	"gitlab.com/thanzen/eq/setting"
+	"gitlab.com/thanzen/identity/setting"
 )
 
 type Message struct {

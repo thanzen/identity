@@ -1,7 +1,7 @@
 package controllers
 
 import (
-	"gitlab.com/thanzen/eq/controllers/base"
+	"gitlab.com/thanzen/identity/controllers/base"
 )
 
 type MainController struct {

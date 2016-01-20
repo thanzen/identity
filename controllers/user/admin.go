@@ -1,8 +1,8 @@
 package user
 
 import (
-    "gitlab.com/thanzen/eq/controllers/base"
-    "gitlab.com/thanzen/eq/conf/permissions"
+    "gitlab.com/thanzen/identity/controllers/base"
+    "gitlab.com/thanzen/identity/conf/permissions"
 )
 
 type AdminController struct {

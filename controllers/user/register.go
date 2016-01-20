@@ -2,10 +2,10 @@ package user
 
 import (
 	"github.com/astaxie/beego"
-	"gitlab.com/thanzen/eq/controllers/base"
-	"gitlab.com/thanzen/eq/models/user"
-	"gitlab.com/thanzen/eq/services/email"
-	userServ "gitlab.com/thanzen/eq/services/user"
+	"gitlab.com/thanzen/identity/controllers/base"
+	"gitlab.com/thanzen/identity/models/user"
+	"gitlab.com/thanzen/identity/services/email"
+	userServ "gitlab.com/thanzen/identity/services/user"
 )
 
 // RegisterController serves register page.

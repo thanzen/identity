@@ -5,9 +5,9 @@ import (
 
 	"github.com/beego/i18n"
 
-	"gitlab.com/thanzen/eq/models/user"
-	userServ "gitlab.com/thanzen/eq/services/user"
-	"gitlab.com/thanzen/eq/utils"
+	"gitlab.com/thanzen/identity/models/user"
+	userServ "gitlab.com/thanzen/identity/services/user"
+	"gitlab.com/thanzen/identity/utils"
 )
 
 //SendRegisterMail sends user register mail with active code

@@ -4,10 +4,10 @@ import (
 	"encoding/json"
 	"fmt"
 	"github.com/astaxie/beego/validation"
-	"gitlab.com/thanzen/eq/conf/permissions"
-	"gitlab.com/thanzen/eq/controllers/base"
-	"gitlab.com/thanzen/eq/models/user"
-	userServes "gitlab.com/thanzen/eq/services/user"
+	"gitlab.com/thanzen/identity/conf/permissions"
+	"gitlab.com/thanzen/identity/controllers/base"
+	"gitlab.com/thanzen/identity/models/user"
+	userServes "gitlab.com/thanzen/identity/services/user"
 	"strings"
 )
 

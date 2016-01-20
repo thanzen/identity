@@ -1,7 +1,7 @@
 package experiment
 
 import (
-	"gitlab.com/thanzen/eq/controllers/base"
+	"gitlab.com/thanzen/identity/controllers/base"
 	"encoding/json"
 	"github.com/astaxie/beego"
 )

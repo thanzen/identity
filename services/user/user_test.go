@@ -3,10 +3,10 @@ package user
 import (
 	"github.com/astaxie/beego/orm"
 	. "github.com/smartystreets/goconvey/convey"
-	"gitlab.com/thanzen/eq/models/user"
-	model "gitlab.com/thanzen/eq/models/user"
-	_ "gitlab.com/thanzen/eq/test"
-	"gitlab.com/thanzen/eq/utils"
+	"gitlab.com/thanzen/identity/models/user"
+	model "gitlab.com/thanzen/identity/models/user"
+	_ "gitlab.com/thanzen/identity/test"
+	"gitlab.com/thanzen/identity/utils"
 	"testing"
 )
 

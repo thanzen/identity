@@ -12,7 +12,7 @@ var PageContainer = (function (_super) {
         _super.call(this, props);
     }
     PageContainer.prototype.render = function () {
-        return (React.createElement("div", {className: "adm-page " + this.props.className}, this.props.children));
+        return (React.createElement("div", {className: "identity-page " + this.props.className}, this.props.children));
     };
     return PageContainer;
 }(BaseComponent_1.default));

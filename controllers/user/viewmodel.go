@@ -5,11 +5,11 @@ import (
 
 	"github.com/astaxie/beego/validation"
 	"github.com/beego/i18n"
-	"gitlab.com/thanzen/eq/models/user"
-	"gitlab.com/thanzen/eq/services"
-	userServ "gitlab.com/thanzen/eq/services/user"
-	"gitlab.com/thanzen/eq/setting"
-	"gitlab.com/thanzen/eq/utils"
+	"gitlab.com/thanzen/identity/models/user"
+	"gitlab.com/thanzen/identity/services"
+	userServ "gitlab.com/thanzen/identity/services/user"
+	"gitlab.com/thanzen/identity/setting"
+	"gitlab.com/thanzen/identity/utils"
 )
 
 // Register model

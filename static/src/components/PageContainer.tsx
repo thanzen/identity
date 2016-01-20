@@ -11,7 +11,7 @@ export  default class PageContainer extends BaseComponent<Props, {}>{
     render() {
         return (
             <div
-                className={`adm-page ${this.props.className}`}
+                className={`identity-page ${this.props.className}`}
                 >
                 {this.props.children}
             </div>

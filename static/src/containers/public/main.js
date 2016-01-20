@@ -6,5 +6,6 @@ var Index_1 = require('./Index');
 var Page_1 = require('./Page');
 var pages_1 = require('../../pages');
 require('../../../node_modules/amazeui/dist/css/amazeui.css');
+require('../../styles/App.css');
 var routes = (React.createElement(react_router_1.Router, null, React.createElement(react_router_1.Route, {path: "/", component: Index_1.default}, React.createElement(react_router_1.Route, {path: ":page", component: Page_1.default}), React.createElement(react_router_1.IndexRoute, {component: pages_1.Home}))));
 react_dom_1.render(routes, document.getElementById('app'));

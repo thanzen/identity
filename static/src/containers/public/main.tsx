@@ -14,6 +14,7 @@ import {
 
 // CSS
 import '../../../node_modules/amazeui/dist/css/amazeui.css';
+import '../../styles/App.css';
 
 
 const routes = (

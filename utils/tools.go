@@ -31,8 +31,8 @@ import (
 	"time"
 
 	"github.com/astaxie/beego"
-	"gitlab.com/thanzen/eq/cachemanager"
-	"gitlab.com/thanzen/eq/setting"
+	"gitlab.com/thanzen/identity/cachemanager"
+	"gitlab.com/thanzen/identity/setting"
 	"strings"
 	"regexp"
 )
