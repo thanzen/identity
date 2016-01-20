@@ -26,4 +26,6 @@ declare module 'amazeui-react' {
     export var Table: any;
     export var Panel: any;
     export var ScrollSpyNav: any;
+    export var Form: any;
+    export var Input: any;
 }

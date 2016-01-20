@@ -5,9 +5,9 @@ var _ = require('lodash');
 var baseConfig = require('./base');
 
 var config = _.merge({
-  entry: path.join(__dirname, '../src/components/main'),
+  entry: path.join(__dirname, '../src/containers/public/main'),
   cache: false,
-  devtool: 'sourcemap',
+//  devtool: 'sourcemap',
   plugins: [
     new webpack.optimize.DedupePlugin(),
     new webpack.optimize.UglifyJsPlugin(),

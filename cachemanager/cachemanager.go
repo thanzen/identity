@@ -3,6 +3,7 @@ package cachemanager
 import (
 	ca "github.com/astaxie/beego/cache"
 	"regexp"
+	"time"
 )
 
 var (
@@ -30,7 +31,7 @@ func GetWithExpireTime(key string, expireTime int64, handler func(params ...inte
 		hit = true
 	} else if val == nil && handler != nil {
 		val = handler(params...)
-		Cache.Put(key, val, expireTime)
+		Cache.Put(key, val, time.Duration(expireTime)*time.Second)
 		keys[key] = nil
 	}
 	return
@@ -38,7 +39,7 @@ func GetWithExpireTime(key string, expireTime int64, handler func(params ...inte
 
 //Put adds/overrides cache by given key
 func Put(key string, val interface{}) {
-	Cache.Put(key, val, ExpireTime)
+	Cache.Put(key, val, time.Duration(ExpireTime)*time.Second)
 	keys[key] = nil
 }
 

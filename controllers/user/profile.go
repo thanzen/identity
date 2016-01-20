@@ -14,7 +14,7 @@ type ProfileController struct {
 
 // Profile implemented user profile settings page.
 func (this *ProfileController) Profile() {
-	this.TplNames = "settings/profile.html"
+	this.TplName = "settings/profile.html"
 
 	// need login
 	if this.CheckLoginRedirect() {
@@ -31,7 +31,7 @@ func (this *ProfileController) Profile() {
 
 // ProfileSave implemented save user profile.
 func (this *ProfileController) ProfileSave() {
-	this.TplNames = "settings/profile.html"
+	this.TplName = "settings/profile.html"
 
 	if this.CheckLoginRedirect() {
 		return
@@ -49,7 +49,7 @@ func (this *ProfileController) ProfileSave() {
 				this.Data["json"] = true
 			}
 
-			this.ServeJson()
+			this.ServeJSON()
 			return
 		}
 		return

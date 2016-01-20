@@ -15,7 +15,7 @@ type ForgotController struct {
 
 // Get implemented Get method for ForgotController.
 func (this *ForgotController) Get() {
-	this.TplNames = "auth/forgot.html"
+	this.TplName = "auth/forgot.html"
 
 	// no need login
 	if this.CheckLoginRedirect(false) {
@@ -28,7 +28,7 @@ func (this *ForgotController) Get() {
 
 // Get implemented Post method for ForgotController.
 func (this *ForgotController) Post() {
-	this.TplNames = "auth/forgot.html"
+	this.TplName = "auth/forgot.html"
 
 	// no need login
 	if this.CheckLoginRedirect(false) {
@@ -49,7 +49,7 @@ func (this *ForgotController) Post() {
 
 // Reset implemented user password reset.
 func (this *ForgotController) Reset() {
-	this.TplNames = "auth/reset.html"
+	this.TplName = "auth/reset.html"
 
 	code := this.GetString(":code")
 	this.Data["Code"] = code
@@ -67,7 +67,7 @@ func (this *ForgotController) Reset() {
 
 // Reset implemented user password reset.
 func (this *ForgotController) ResetPost() {
-	this.TplNames = "auth/reset.html"
+	this.TplName = "auth/reset.html"
 
 	code := this.GetString(":code")
 	this.Data["Code"] = code

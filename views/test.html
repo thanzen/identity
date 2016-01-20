@@ -1,29 +1,14 @@
 <!DOCTYPE html>
-<html ng-app>
+<html>
 <head>
-    <title>Product list</title>
-   
-    <script type="text/javascript" src="../Scripts/react/react-0.12.2.js"></script>
-    <script type="text/javascript" src="../Scripts/react/JSXTransformer-0.12.2.js"></script>
-
+    <meta charset="utf-8">
+    <title>React Webpack Template Title</title>
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+    <meta name="description" content="">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
 </head>
 <body>
-<div id="roles"></div>
-<div id="users"></div>
-    <script type="text/jsx" src="../Scripts/components/users/role.js"></script>
-    <script type="text/jsx" src="../Scripts/components/users/users.js"></script>
-<script type="text/jsx">
-    var data = [{id: 1, firstName: "Billy", lastName: "Bob"}, {id: 2, firstName: "Joe", lastName: "James"}];
-    React.render(
-            <RoleComboList> </RoleComboList>,
-            document.getElementById('roles')
-    );
-
-    React.render(
-            <UserList data={data}> </UserList>,
-            document.getElementById('users')
-    );
-</script>
-
+<div id="app">APPLICATION CONTENT</div>
+<script type="text/javascript" src="../static/dist/assets/main.js"></script>
 </body>
 </html>

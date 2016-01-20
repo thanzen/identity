@@ -37,7 +37,7 @@ var Header = (function (_super) {
         _super.apply(this, arguments);
     }
     Header.prototype.render = function () {
-        return (React.createElement(PageContainer_1.default, null, React.createElement(amazeui_react_1.AvgGrid, {sm: 1, md: 1, lg: 2}, React.createElement("li", null, React.createElement("div", {style: styles.div}, React.createElement("br", null), React.createElement("span", {style: styles.h1}, "Better use of data,", React.createElement("br", null), " better success of business"), React.createElement("br", null), React.createElement("span", {style: styles.p}, "We are here to help you obtain data, process data, and analyze data for your needs!"))), React.createElement("li", null, React.createElement("img", {className: "am-thumbnail", style: styles.img, src: "../images/business-intelligence-process.png"})))));
+        return (React.createElement(PageContainer_1.default, null, React.createElement(amazeui_react_1.AvgGrid, {sm: 1, md: 1, lg: 2}, React.createElement("li", null, React.createElement("div", {style: styles.div}, React.createElement("br", null), React.createElement("span", {style: styles.h1}, "Better use of data,", React.createElement("br", null), " better success of business"), React.createElement("br", null), React.createElement("span", {style: styles.p}, "We are here to help you obtain data, process data, and analyze data for your needs!"))), React.createElement("li", null, React.createElement("img", {className: "am-thumbnail", style: styles.img, src: "/assets/images/business-intelligence-process.png"})))));
     };
     return Header;
 }(BaseComponent_1.default));

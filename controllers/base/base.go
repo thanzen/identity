@@ -91,7 +91,7 @@ func (this *BaseController) Prepare() {
 	}
 
 	// Setting properties.
-	this.Data["AppName"] = beego.AppName
+	this.Data["AppName"] = beego.BConfig.AppName
 	this.Data["AppVer"] = setting.AppVer
 	this.Data["AppUrl"] = setting.AppUrl
 	this.Data["AppLogo"] = setting.AppLogo
@@ -109,9 +109,9 @@ func (this *BaseController) Prepare() {
 	beego.ReadFromRequest(&this.Controller)
 
 	// pass xsrf helper to template context
-	xsrfToken := this.XsrfToken()
+	xsrfToken := this.XSRFToken()
 	this.Data["xsrf_token"] = xsrfToken
-	this.Data["xsrf_html"] = template.HTML(this.XsrfFormHtml())
+	this.Data["xsrf_html"] = template.HTML(this.XSRFFormHTML())
 
 	// if method is GET then auto create a form once token
 	if this.Ctx.Request.Method == "GET" {
@@ -188,7 +188,7 @@ func (this *BaseController) CheckActiveRedirect(args ...interface{}) bool {
 
 // check if not login then redirect
 func (this *BaseController) CheckLoginRedirect(args ...interface{}) bool {
-	if beego.RunMode == "dev" {
+	if beego.BConfig.RunMode == "dev" {
 		return  false
 	}
 	var redirect_to string
@@ -367,7 +367,7 @@ func (this *BaseController) FormOnceCreate(args ...bool) {
 	this.Data["once_html"] = template.HTML(`<input type="hidden" name="_once" value="` + value + `">`)
 }
 
-func (this *BaseController) validForm(form interface{}, names ...string) (bool, map[string]*validation.ValidationError) {
+func (this *BaseController) validForm(form interface{}, names ...string) (bool, map[string]*validation.Error) {
 	// parse request params to form ptr struct
 //	utils.ParseForm(form, this.Input())
 	this.ParseForm(form)
@@ -413,7 +413,7 @@ func (this *BaseController) SetFormSets(form interface{}, names ...string) *util
 	return this.setFormSets(form, nil, names...)
 }
 
-func (this *BaseController) setFormSets(form interface{}, errs map[string]*validation.ValidationError, names ...string) *utils.FormSets {
+func (this *BaseController) setFormSets(form interface{}, errs map[string]*validation.Error, names ...string) *utils.FormSets {
 	formSets := utils.NewFormSets(form, errs, this.Locale)
 	name := reflect.ValueOf(form).Elem().Type().Name()
 	if len(names) > 0 {
@@ -445,7 +445,7 @@ func (this *BaseController) SetFormError(form interface{}, fieldName, errMsg str
 
 // check xsrf and show a friendly page
 func (this *BaseController) CheckXsrfCookie() bool {
-	return this.Controller.CheckXsrfCookie()
+	return this.Controller.CheckXSRFCookie()
 }
 
 func (this *BaseController) SystemException() {
@@ -540,7 +540,7 @@ func (this *BaseController) setLang() bool {
 }
 
 func (this *BaseController) CheckPermission(permissions ...string)  {
-    if beego.RunMode =="dev" || len(permissions) == 0 {
+    if beego.BConfig.RunMode =="dev" || len(permissions) == 0 {
         return
     }
     for _,p:= range permissions {
@@ -551,7 +551,7 @@ func (this *BaseController) CheckPermission(permissions ...string)  {
 }
 func (this *BaseController) AuthCheck(isRedirect bool) {
     if this.IsLogin && isRedirect {
-        this.Redirect(beego.HttpAddr, 401)
+        this.Redirect(beego.BConfig.Listen.HTTPAddr, 401)
     }
 }
 
@@ -571,7 +571,7 @@ func (this *BaseController) GetLoginRedirect(ctx *context.Context) string {
 func (this *BaseController) LoginUserRememberCookie(u *user.User, ctx *context.Context, remember bool) {
     // weird way of beego session regenerate id...
     ctx.Input.CruSession.SessionRelease(ctx.ResponseWriter)
-    ctx.Input.CruSession = beego.GlobalSessions.SessionRegenerateId(ctx.ResponseWriter, ctx.Request)
+    ctx.Input.CruSession = beego.GlobalSessions.SessionRegenerateID(ctx.ResponseWriter, ctx.Request)
     ctx.Input.CruSession.Set("auth_user_id", u.Id)
 
     if remember {
@@ -624,7 +624,7 @@ func (this *BaseController) LogoutUser(ctx *context.Context) {
     beego.GlobalSessions.SessionDestroy(ctx.ResponseWriter, ctx.Request)
 }
 
-func (this *BaseController) GetUserIdFromSession(sess session.SessionStore) int64 {
+func (this *BaseController) GetUserIdFromSession(sess session.Store) int64 {
     if id, ok := sess.Get("auth_user_id").(int64); ok && id > 0 {
         return id
     }
@@ -632,7 +632,7 @@ func (this *BaseController) GetUserIdFromSession(sess session.SessionStore) int6
 }
 
 // get user if key exist in session
-func (this *BaseController) GetUserFromSession(u *user.User, sess session.SessionStore) bool {
+func (this *BaseController) GetUserFromSession(u *user.User, sess session.Store) bool {
     id := this.GetUserIdFromSession(sess)
     if id > 0 {
         u.Id = id

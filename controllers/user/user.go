@@ -24,15 +24,15 @@ func (this *UserController) getUser(u *user.User) bool {
 }
 
 func (this *UserController) Index() {
-	//this.TplNames = "user/home.html"
-	//this.TplNames = "index.html"
+	//this.TplName = "user/home.html"
+	//this.TplName = "index.html"
 	var user user.User
 	this.Data["TheUser"] = &user
 	if this.getUser(&user) {
 		return
 	}
     this.Data["json"] = &user
-    this.ServeJson()
+    this.ServeJSON()
 
 	//limit := 5
 

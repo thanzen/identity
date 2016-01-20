@@ -39,7 +39,7 @@ func (this *RoleApiController) GetRoles() {
 		roles = append(roles, r)
 	}
 	this.Data["json"] = roles
-	this.ServeJson()
+	this.ServeJSON()
 }
 
 //AddUsers add users to given role
@@ -56,7 +56,7 @@ func (this *RoleApiController) AddUsers() {
 	} else if model.roleId <= 0 {
 		this.Ctx.Abort(500, "invalid role id")
 	}
-	this.ServeJson()
+	this.ServeJSON()
 }
 
 //DeleteUsers delete users for given role
@@ -73,7 +73,7 @@ func (this *RoleApiController) DeleteUsers() {
 	} else if model.roleId <= 0 {
 		this.Ctx.Abort(500, "invalid role id")
 	}
-	this.ServeJson()
+	this.ServeJSON()
 }
 
 //AddPermissions add permissions to given role
@@ -90,7 +90,7 @@ func (this *RoleApiController) AddPermissions() {
 	} else if model.roleId <= 0 {
 		this.Ctx.Abort(500, "invalid role id")
 	}
-	this.ServeJson()
+	this.ServeJSON()
 }
 
 //DeletePermissions delete permissions for given role
@@ -107,7 +107,7 @@ func (this *RoleApiController) DeletePermissions() {
 	} else if model.roleId <= 0 {
 		this.Ctx.Abort(500, "invalid role id")
 	}
-	this.ServeJson()
+	this.ServeJSON()
 }
 
 //Add add a role
@@ -122,7 +122,7 @@ func (this *RoleApiController) Add() {
 		this.Ctx.Abort(500, err.Error())
 	}
 	this.Data["json"] = model
-	this.ServeJson()
+	this.ServeJSON()
 }
 
 //Update update a role
@@ -139,7 +139,7 @@ func (this *RoleApiController) Update() {
 	if err != nil {
 		this.Ctx.Abort(500, err.Error())
 	}
-	this.ServeJson()
+	this.ServeJSON()
 }
 
 func (this *RoleApiController) validate(role *user.Role) {

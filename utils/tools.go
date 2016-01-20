@@ -214,7 +214,7 @@ func TimesReachedTest(key string, times int) (int, bool) {
 }
 
 func TimesReachedSet(key string, times int, reloadMinutes int) {
-	cachemanager.Cache.Put(key, times+1, int64(reloadMinutes)*60)
+	cachemanager.Cache.Put(key, times+1, time.Duration(reloadMinutes)*time.Minute)
 }
 
 func IsEmail(email string) bool{

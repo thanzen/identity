@@ -15,7 +15,7 @@ func NewMailMessage(To []string, subject, body string) Message {
 
 func GetMailTmplData(lang string, u *user.User) map[interface{}]interface{} {
 	data := make(map[interface{}]interface{}, 10)
-	data["AppName"] = beego.AppName
+	data["AppName"] = beego.BConfig.AppName
 	data["AppVer"] = setting.AppVer
 	data["AppUrl"] = setting.AppUrl
 	data["AppLogo"] = setting.AppLogo

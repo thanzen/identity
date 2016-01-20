@@ -17,7 +17,7 @@ type AuthController struct {
 // Get implemented login page.
 func (this *AuthController) Get() {
 	this.Data["IsLoginPage"] = true
-	this.TplNames = "auth/login.html"
+	this.TplName = "auth/login.html"
 
 	loginRedirect := strings.TrimSpace(this.GetString("to"))
 	if utils.IsMatchHost(loginRedirect) == false {
@@ -41,7 +41,7 @@ func (this *AuthController) Get() {
 func (this *AuthController) Login() {
 
 	this.Data["IsLoginPage"] = true
-	this.TplNames = "index.html"
+	this.TplName = "index.html"
 
 	// no need login
 	if this.CheckLoginRedirect(false) {
@@ -78,7 +78,7 @@ func (this *AuthController) Login() {
 				"message":  this.Tr("auth.login_success_ajax"),
 				"redirect": loginRedirect,
 			}
-			this.ServeJson()
+			this.ServeJSON()
 			return
 		}
 		this.Redirect(loginRedirect, 302)
@@ -98,7 +98,7 @@ ajaxError:
 		"message": this.Tr(ajaxErrMsg),
 		"once":    this.Data["once_token"],
 	}
-	this.ServeJson()
+	this.ServeJSON()
 }
 
 // Logout implemented user logout page.

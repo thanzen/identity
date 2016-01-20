@@ -63,19 +63,19 @@ module.exports = {
         test: /\.(png|jpg)$/,
         loader: 'url-loader?limit=100000'
       }, {
-      test: /\.woff(\?v=\d+\.\d+\.\d+)?$/,
+      test: /\.woff(\?\S*)?$/,
       loader: "url?limit=10000&mimetype=application/font-woff"
     }, {
-      test: /\.woff2(\?v=\d+\.\d+\.\d+)?$/,
+      test: /\.woff2(\?\S*)?$/,
       loader: "url?limit=10000&mimetype=application/font-woff"
     }, {
-      test: /\.ttf(\?v=\d+\.\d+\.\d+)?$/,
+      test: /\.ttf(\?\S*)?$/,
       loader: "url?limit=10000&mimetype=application/octet-stream"
     }, {
-      test: /\.eot(\?v=\d+\.\d+\.\d+)?$/,
+      test: /\.eot(\?\S*)?$/,
       loader: "file"
     }, {
-      test: /\.svg(\?v=\d+\.\d+\.\d+)?$/,
+      test: /\.svg(\?\S*)?$/,
       loader: "url?limit=10000&mimetype=image/svg+xml"
     }]
 

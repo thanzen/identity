@@ -97,21 +97,21 @@ func Initialize() {
 
 	cachemanager.Cache = cac
 	// session settings
-	beego.SessionOn = true
-	//beego.SessionProvider = Cfg.MustValue("session", "session_provider", "file")
-	//beego.SessionSavePath = Cfg.MustValue("session", "session_path", "sessions")
-	//beego.SessionName = Cfg.MustValue("session", "session_name", "wetalk_sess")
-	//beego.SessionCookieLifeTime = Cfg.MustInt("session", "session_life_time", 0)
-	//beego.SessionGCMaxLifetime = Cfg.MustInt64("session", "session_gc_time", 86400)
+	beego.BConfig.WebConfig.Session.SessionOn = true
+	//beego.BConfig.WebConfig.Session.SessionProvider = Cfg.MustValue("session", "session_provider", "file")
+	//beego.BConfig.WebConfig.Session.SessionProviderConfig = Cfg.MustValue("session", "session_path", "sessions")
+	//beego.BConfig.WebConfig.Session.SessionName = Cfg.MustValue("session", "session_name", "wetalk_sess")
+	//beego.BConfig.WebConfig.Session.SessionCookieLifeTime = Cfg.MustInt("session", "session_life_time", 0)
+	//beego.BConfig.WebConfig.Session.SessionGCMaxLifetime = Cfg.MustInt64("session", "session_gc_time", 86400)
 	//load custom configurations
 	loadConfig()
 	//disable live reload for db connections
-	PostgresConnection = beego.AppConfig.DefaultString(beego.RunMode+"::"+"pg_conn", "user=postgres password=root dbname=eq sslmode=disable")
-    PostgresMigrateConnection =  beego.AppConfig.DefaultString(beego.RunMode+"::"+"pg_migrate", "postgres://postgres:root@localhost:5432/test?sslmode=disable")
+	PostgresConnection = beego.AppConfig.DefaultString(beego.BConfig.RunMode+"::"+"pg_conn", "user=postgres password=root dbname=eq sslmode=disable")
+    PostgresMigrateConnection =  beego.AppConfig.DefaultString(beego.BConfig.RunMode+"::"+"pg_migrate", "postgres://postgres:root@localhost:5432/test?sslmode=disable")
 	// cache system
 
 	Captcha = captcha.NewCaptcha("/captcha/", cac)
-	Captcha.FieldIdName = "CaptchaId"
+	Captcha.FieldIDName = "CaptchaId"
 	Captcha.FieldCaptchaName = "Captcha"
 
 	settingCompress()
@@ -143,11 +143,11 @@ func settingCompress() {
 func loadConfig() {
 	AppVer = strings.Join(strings.Split(APP_VER, ".")[:3], ".")
 
-	IsProMode = beego.RunMode == "pro"
+	IsProMode = beego.BConfig.RunMode == "pro"
 
 	CacheTime = beego.AppConfig.DefaultInt64("cache_time", 300)
 	cachemanager.ExpireTime = CacheTime
-	AppHost = beego.HttpAddr + ":" + strconv.Itoa(beego.HttpPort)
+	AppHost = beego.BConfig.Listen.HTTPAddr + ":" + strconv.Itoa(beego.BConfig.Listen.HTTPPort)
 	//	AppUrl = beego.AppConfig.DefaultString("app_url", "http://localhost:8080/")
 	AppUrl = "http://" + AppHost + "/"
 	beego.Info(PostgresConnection)
@@ -297,7 +297,7 @@ func IsMatchHost(uri string) bool {
 		return false
 	}
 
-	if u.Host != beego.AppPath {
+	if u.Host != beego.BConfig.Listen.HTTPAddr{
 		return false
 	}
 	return true

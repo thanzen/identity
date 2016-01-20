@@ -45,7 +45,7 @@ func (this *AdminApiController) GetUsers() {
 	n,_ := this.UserService.FuzzySearch(&users, param.Query, param.RoleId, param.Offset, param.Limit,param.IncludeTotal)
 	resp := UserFuzzSearchResponse{Users:users,Total:n}
 	this.Data["json"] = resp
-	this.ServeJson(true)
+	this.ServeJSON(true)
 }
 
 
@@ -62,7 +62,7 @@ func (this *AdminApiController) Update() {
 	} else {
 		this.Ctx.Abort(500, "invalid user id")
 	}
-	this.ServeJson()
+	this.ServeJSON()
 }
 func (this *AdminApiController) ResetPassword(){
     var ChangePasswordModel = struct {
@@ -83,5 +83,5 @@ func (this *AdminApiController) ResetPassword(){
     } else {
         this.Ctx.Abort(500, "invalid user id")
     }
-    this.ServeJson()
+    this.ServeJSON()
 }

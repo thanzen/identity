@@ -12,5 +12,5 @@ type AdminController struct {
 func (this *AdminController) Index()  {
     this.CheckLoginRedirect()
     this.CheckPermission(permissions.RoleViewAll)
-    this.TplNames = "admin/index.html"
+    this.TplName = "admin/index.html"
 }

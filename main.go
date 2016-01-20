@@ -24,14 +24,14 @@ func main() {
 	} else {
 		beego.Info("Develment mode enabled")
 	}
-	beego.Info(beego.AppName, setting.APP_VER, setting.AppUrl)
+	beego.Info(beego.BConfig.AppName, setting.APP_VER, setting.AppUrl)
 
 	//dev directory listing
 	if !setting.IsProMode {
-		beego.SetStaticPath("/dev", "static")
-		beego.DirectoryIndex = true
+		beego.SetStaticPath("/assets", "static/dist/assets")
+		beego.BConfig.WebConfig.DirectoryIndex = true
 	}
-	orm.RegisterDriver("postgres", orm.DR_Postgres)
+	orm.RegisterDriver("postgres", orm.DRPostgres)
 
 	orm.RegisterDataBase("default", "postgres", setting.PostgresConnection)
 	services.Register()
@@ -40,7 +40,7 @@ func main() {
 
 	controllers.RegisterControllers()
 
-	if beego.RunMode == "dev" {
+	if beego.BConfig.RunMode == "dev" {
 		//	beego.Router("/test/:tmpl(mail/.*)", new(base.TestRouter))
 	}
 	beego.Run()

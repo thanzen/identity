@@ -20,7 +20,7 @@ func TestInitializeTestingDatabase(path string) {
 	}
 }
 func TestInitOrm(){
-    orm.RegisterDriver("postgres", orm.DR_Postgres)
+    orm.RegisterDriver("postgres", orm.DRPostgres)
     orm.RegisterDataBase("default", "postgres", "user=postgres password=root dbname=eqtest sslmode=disable")
     services.Register()
 }

@@ -21,7 +21,7 @@ func (this *RegisterController) Get() {
 	}
 
 	this.Data["IsRegister"] = true
-	this.TplNames = "auth/register.html"
+	this.TplName = "auth/register.html"
 
 	form := RegisterForm{Locale: this.Locale}
 	this.SetFormSets(&form)
@@ -30,7 +30,7 @@ func (this *RegisterController) Get() {
 // Register implemented Post method for RegisterController.
 func (this *RegisterController) Register() {
 	this.Data["IsRegister"] = true
-	this.TplNames = "auth/register.html"
+	this.TplName = "auth/register.html"
 
 	// no need login
 	if this.CheckLoginRedirect(false) {
@@ -71,7 +71,7 @@ func (this *RegisterController) Register() {
 
 // Active implemented check Email actice code.
 func (this *RegisterController) Active() {
-	this.TplNames = "auth/active.html"
+	this.TplName = "auth/active.html"
 
 	// no need active
 	if this.CheckActiveRedirect(false) {
@@ -100,7 +100,7 @@ func (this *RegisterController) Active() {
 
 // ActiveSuccess implemented success page when email active code verified.
 func (this *RegisterController) ActiveSuccess() {
-	this.TplNames = "auth/active.html"
+	this.TplName = "auth/active.html"
 
 	this.Data["Success"] = true
 }
