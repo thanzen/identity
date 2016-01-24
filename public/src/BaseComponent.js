@@ -10,6 +10,22 @@ var BaseComponent = (function (_super) {
     function BaseComponent() {
         _super.apply(this, arguments);
     }
+    BaseComponent.setBaseDir = function (baseDir) {
+        if (BaseComponent.baseDir == null || BaseComponent.baseDir == undefined) {
+            BaseComponent.baseDir = baseDir;
+        }
+    };
+    BaseComponent.getBaseDir = function () {
+        return BaseComponent.baseDir;
+    };
+    BaseComponent.setIsLogedIn = function (isLogedIn) {
+        if (BaseComponent.isLogedIn == null || BaseComponent.isLogedIn == undefined) {
+            BaseComponent.isLogedIn = isLogedIn;
+        }
+    };
+    BaseComponent.getIsLogedIn = function () {
+        return BaseComponent.isLogedIn;
+    };
     return BaseComponent;
 }(React.Component));
 Object.defineProperty(exports, "__esModule", { value: true });

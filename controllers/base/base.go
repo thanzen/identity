@@ -369,8 +369,8 @@ func (this *BaseController) FormOnceCreate(args ...bool) {
 
 func (this *BaseController) validForm(form interface{}, names ...string) (bool, map[string]*validation.Error) {
 	// parse request params to form ptr struct
-//	utils.ParseForm(form, this.Input())
-	this.ParseForm(form)
+	utils.ParseForm(form, this.Input())
+	//this.ParseForm(form)
 
 	// Put data back in case users input invalid data for any section.
 	name := reflect.ValueOf(form).Elem().Type().Name()

@@ -51,6 +51,7 @@ var (
 	AppLogo                   string
 	EnforceRedirect           bool
 	IsProMode                 bool
+	IsActivationRequired        bool
 	AppVer                    string
 	DateFormat                string
 	DateTimeFormat            string
@@ -107,7 +108,7 @@ func Initialize() {
 	loadConfig()
 	//disable live reload for db connections
 	PostgresConnection = beego.AppConfig.DefaultString(beego.BConfig.RunMode+"::"+"pg_conn", "user=postgres password=root dbname=eq sslmode=disable")
-    PostgresMigrateConnection =  beego.AppConfig.DefaultString(beego.BConfig.RunMode+"::"+"pg_migrate", "postgres://postgres:root@localhost:5432/test?sslmode=disable")
+	PostgresMigrateConnection = beego.AppConfig.DefaultString(beego.BConfig.RunMode+"::"+"pg_migrate", "postgres://postgres:root@localhost:5432/test?sslmode=disable")
 	// cache system
 
 	Captcha = captcha.NewCaptcha("/captcha/", cac)
@@ -152,6 +153,7 @@ func loadConfig() {
 	AppUrl = "http://" + AppHost + "/"
 	beego.Info(PostgresConnection)
 	EnforceRedirect = beego.AppConfig.DefaultBool("enforce_redirect", false)
+	IsActivationRequired = beego.AppConfig.DefaultBool("isActivationRequired",true)
 	AppLogo = beego.AppConfig.DefaultString("app_logo", "/static/img/logo.gif")
 	//todo change later
 	MailFrom = beego.AppConfig.DefaultString("mail_from", "some@gmail.com")
@@ -185,7 +187,7 @@ func loadConfig() {
 	if len(SecretKey) == 0 {
 		fmt.Println("Please set your secret_key in app.conf file")
 	}
-	SystemAdminEmails = beego.AppConfig.DefaultString("system_admin_emails","than@linkedtec.com")
+	SystemAdminEmails = beego.AppConfig.DefaultString("system_admin_emails", "than@linkedtec.com")
 }
 
 func settingLocales() {
@@ -297,7 +299,7 @@ func IsMatchHost(uri string) bool {
 		return false
 	}
 
-	if u.Host != beego.BConfig.Listen.HTTPAddr{
+	if u.Host != beego.BConfig.Listen.HTTPAddr {
 		return false
 	}
 	return true

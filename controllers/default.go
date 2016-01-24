@@ -14,7 +14,7 @@ func (c *MainController) Get() {
 	c.TplName = "index.tpl"
 }
 func (c *MainController) Index() {
-	c.TplName = "index.html"
-	//c.TplName = "test.html"
+	//c.TplName = "index.html"
+	c.TplName = "test.html"
 
 }

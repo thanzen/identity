@@ -1,5 +1,6 @@
 import * as React from 'react';
 import {render} from 'react-dom';
+import BaseComponent from '../../BaseComponent';
 import {
   Router,
   Route,
@@ -16,7 +17,8 @@ import {
 import '../../../node_modules/amazeui/dist/css/amazeui.css';
 import '../../styles/App.css';
 
-
+let baseDir=(document.getElementById('base_dir') as HTMLInputElement).value;
+BaseComponent.setBaseDir(baseDir);
 const routes = (
   <Router>
     <Route path="/" component={Index}>

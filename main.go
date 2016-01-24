@@ -20,10 +20,11 @@ func main() {
 		beego.Info(setting.PostgresMigrateConnection)
 		//auto migrate db
 		//todo: we may want to disable this later
-		dbMigrate()
+		//dbMigrate()
 	} else {
 		beego.Info("Develment mode enabled")
 	}
+	dbMigrate()
 	beego.Info(beego.BConfig.AppName, setting.APP_VER, setting.AppUrl)
 
 	//dev directory listing

@@ -27,6 +27,9 @@ const pages = {
   home: Home,
 };
 
+let baseDir=(document.getElementById('base_dir') as HTMLInputElement).value;
+
+
 var App = React.createClass({
   render() {
     return (
@@ -39,6 +42,8 @@ var App = React.createClass({
     );
   },
 });
+
+Home.setBaseDir(baseDir);
 
 const Page = React.createClass({
   render() {

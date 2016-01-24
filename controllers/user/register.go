@@ -6,6 +6,7 @@ import (
 	"gitlab.com/thanzen/identity/models/user"
 	"gitlab.com/thanzen/identity/services/email"
 	userServ "gitlab.com/thanzen/identity/services/user"
+	"gitlab.com/thanzen/identity/setting"
 )
 
 // RegisterController serves register page.
@@ -51,13 +52,18 @@ func (this *RegisterController) Register() {
 
 	role := new(user.Role)
 	role.Id = 1
-
+	if !setting.IsActivationRequired {
+		u.Active = true
+	}
 	if err := this.UserService.RegisterUser(u, form.Username, form.Email, form.Password, ut, role); err == nil {
-		email.SendRegisterMail(this.Locale, u)
+		if setting.IsActivationRequired {
+			email.SendRegisterMail(this.Locale, u)
+		}
 
 		loginRedirect := this.LoginUser(u, false)
 		if loginRedirect == "/" {
-			this.FlashRedirect("/settings/profile", 302, "RegSuccess")
+			//this.FlashRedirect("/settings/profile", 302, "RegSuccess")
+			this.FlashRedirect("/", 302, "RegSuccess")
 		} else {
 			this.Redirect(loginRedirect, 302)
 		}

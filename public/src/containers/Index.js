@@ -8,11 +8,13 @@ var pages_1 = require('../pages');
 var pages = {
     home: pages_1.Home,
 };
+var baseDir = document.getElementById('base_dir').value;
 var App = React.createClass({
     render: function () {
         return (React.createElement("div", {className: "adm-container"}, React.createElement(components_1.Header, null), React.createElement("div", {className: "adm-main"}, this.props.children)));
     },
 });
+pages_1.Home.setBaseDir(baseDir);
 var Page = React.createClass({
     render: function () {
         var page = this.props.params.page;

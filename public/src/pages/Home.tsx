@@ -38,7 +38,7 @@ export default class Header extends BaseComponent<{}, {}> {
                        </span>
                    </div>
                    </li>
-                   <li  ><img className="am-thumbnail" style={styles.img} src="/assets/images/business-intelligence-process.png" /></li>
+                   <li  ><img className="am-thumbnail" style={styles.img} src={Object.getPrototypeOf(this).constructor.getBaseDir()+"/images/business-intelligence-process.png"} /></li>
                </AvgGrid>
             </PageContainer>
         );
