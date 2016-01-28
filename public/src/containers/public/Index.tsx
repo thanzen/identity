@@ -13,6 +13,7 @@ export default class Index extends BaseComponent<Props, {}> {
         <div className="adm-main">
           {this.props.children}
         </div>
+
       </div>
     );
   }

@@ -7,10 +7,18 @@ var __extends = (this && this.__extends) || function (d, b) {
 var React = require('react');
 var pages_1 = require('../../pages');
 var components_1 = require('../../components');
+var extractor_1 = require("../../components/extractor");
 var pages = {
     home: pages_1.Home,
 };
 var BaseComponent_1 = require('../../BaseComponent');
+var react_redux_1 = require('react-redux');
+function select(state) {
+    return {
+        xpaths: state.xpaths,
+        url: state.url
+    };
+}
 var Page = (function (_super) {
     __extends(Page, _super);
     function Page() {
@@ -23,9 +31,9 @@ var Page = (function (_super) {
         if (pages[page]) {
             return React.createElement(pages[page], {});
         }
-        return (React.createElement(components_1.PageContainer, null, "404"));
+        return (React.createElement(components_1.PageContainer, null, React.createElement(extractor_1.SearchBar, {url: this.props.url}), React.createElement(extractor_1.KeyValueTable, {data: [{ path: "/html/bo", value: "1asfasdfadfasdfasdfasdfasdfasdfasdfasdfasfdafdafdafd" }, { path: "b", value: "2" }]})));
     };
     return Page;
 }(BaseComponent_1.default));
 Object.defineProperty(exports, "__esModule", { value: true });
-exports.default = Page;
+exports.default = react_redux_1.connect(select)(Page);
