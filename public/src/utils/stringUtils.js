@@ -1,4 +1,4 @@
 "use strict";
-exports.stringEndsWith = function (source, suffix) {
+exports.stringEndsWith = (source, suffix) => {
     return source.indexOf(suffix, source.length - suffix.length) !== -1;
 };

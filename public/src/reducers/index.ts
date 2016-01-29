@@ -2,29 +2,42 @@ import { combineReducers } from 'redux'
 import { default as EventType } from '../eventType';
 import {Xpath} from '../models/Xpath';
 import {default as context} from '../context';
+import {indexOf} from '../utils/utils';
 // import {indexOf} from '../utils';
 // let content1 = "Rpeditor is a block editor based on quill.<br>React, Typescript and Redux are highly used in the code, and atom is the preferred IDE.<br>You can find source code in the <a href=\"https://github.com/thanzen/rpeditor\">github</a>";
 // let content2 = "Features:<br>*  WYSWYG<br>*  BLOCK<br>*  PEVIEW<br>*  RESPONSIVE<br>*  CHANGE BLOCK POSITION";
 // let content3 ="What I like?<br><img src=\"https://talks.golang.org/2014/readability/gopher-ok-no.png\">";
 let initialState = {
     xpaths: [],
-    url: ""
+    url: "",
+    selectedXpaths: []
 }
 
 function getXPaths(state: Xpath[] = initialState.xpaths, action) {
     switch (action.type) {
         case EventType.GET_EXTRACT_REQUEST:
             return action.data;
+        case EventType.TOGGLE_SELECTION:
+            return toggleSelection(state, action);
         default:
             return state
     }
 }
+function toggleSelection(state: Xpath[] = initialState.xpaths, action) {
+    if (action.type == EventType.TOGGLE_SELECTION) {
+        return state.map(xpath =>
+            xpath.path === action.xpath.path ? { path: xpath.path, value: xpath.value, isSelected: !xpath.isSelected } : xpath
+        );
+    }
+    return state;
 
-function changeUrl(state:string = initialState.url,action){
-  if(action.type == EventType.URL_CHANGE){
-    return action.url;
-  }
-  return state;
+}
+
+function changeUrl(state: string = initialState.url, action) {
+    if (action.type == EventType.URL_CHANGE) {
+        return action.url;
+    }
+    return state;
 }
 // function selectTab(state: number = initialState.selectedTab, action) {
 //     if (action.type == EventType.QUILL_SELECT_TAB) {
@@ -113,8 +126,8 @@ function changeUrl(state:string = initialState.url,action){
 // }
 //
 const reducers = combineReducers({
-  xpaths: getXPaths,
-  url: changeUrl
+    xpaths: getXPaths,
+    url: changeUrl
 })
 
 export default reducers

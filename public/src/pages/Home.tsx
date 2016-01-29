@@ -1,7 +1,10 @@
 import * as React from 'react';
 import PageContainer from '../components/PageContainer';
 import BaseComponent from '../BaseComponent';
-import { AvgGrid,Sticky,ScrollSpyNav,Panel} from 'amazeui-react';
+import { AvgGrid, Sticky, ScrollSpyNav, Panel} from 'amazeui-react';
+import {SearchBar} from "../components/extractor";
+import { connect } from 'react-redux';
+import context from '../context';
 
 const styles = {
     h1: {
@@ -26,21 +29,33 @@ const styles = {
         marginLeft: "15%"
     }
 }
-export default class Header extends BaseComponent<{}, {}> {
+
+function select(state) {
+    return {
+        url: state.url
+    }
+}
+
+interface Props { url: string }
+class Header extends BaseComponent<Props, {}> {
     render() {
+        let {url} = this.props;
         return (
             <PageContainer>
-               <AvgGrid sm={1} md={1} lg={2}>
-                   <li><div style={styles.div}>
-                       <br/>
-                       <span style={styles.h1}>Better use of data,<br/> better success of business</span><br/>
-                       <span style={styles.p}>We are here to help you obtain data, process data, and analyze data for your needs!
-                       </span>
-                   </div>
-                   </li>
-                   <li  ><img className="am-thumbnail" style={styles.img} src={Object.getPrototypeOf(this).constructor.getBaseDir()+"/images/business-intelligence-process.png"} /></li>
-               </AvgGrid>
+                <AvgGrid sm={1} md={1} lg={2}>
+                    <li><div style={styles.div}>
+                        <br/>
+                        <span style={styles.h1}>Better use of data, <br/> better success of business</span><br/>
+                        <span style={styles.p}>We are here to help you obtain data, process data, and analyze data for your needs!
+                        </span>
+                    </div>
+                    </li>
+                    <li  ><img className="am-thumbnail" style={styles.img} src={context.baseDir+ "/images/business-intelligence-process.png"} /></li>
+                </AvgGrid>
+                <SearchBar url={url} navUrl="/extractor"/>
             </PageContainer>
         );
     }
 }
+
+export default connect(select)(Header);

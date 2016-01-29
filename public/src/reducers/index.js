@@ -1,27 +1,34 @@
 "use strict";
-var redux_1 = require('redux');
-var eventType_1 = require('../eventType');
-var initialState = {
+const redux_1 = require('redux');
+const eventType_1 = require('../eventType');
+let initialState = {
     xpaths: [],
-    url: ""
+    url: "",
+    selectedXpaths: []
 };
-function getXPaths(state, action) {
-    if (state === void 0) { state = initialState.xpaths; }
+function getXPaths(state = initialState.xpaths, action) {
     switch (action.type) {
         case eventType_1.default.GET_EXTRACT_REQUEST:
             return action.data;
+        case eventType_1.default.TOGGLE_SELECTION:
+            return toggleSelection(state, action);
         default:
             return state;
     }
 }
-function changeUrl(state, action) {
-    if (state === void 0) { state = initialState.url; }
+function toggleSelection(state = initialState.xpaths, action) {
+    if (action.type == eventType_1.default.TOGGLE_SELECTION) {
+        return state.map(xpath => xpath.path === action.xpath.path ? { path: xpath.path, value: xpath.value, isSelected: !xpath.isSelected } : xpath);
+    }
+    return state;
+}
+function changeUrl(state = initialState.url, action) {
     if (action.type == eventType_1.default.URL_CHANGE) {
         return action.url;
     }
     return state;
 }
-var reducers = redux_1.combineReducers({
+const reducers = redux_1.combineReducers({
     xpaths: getXPaths,
     url: changeUrl
 });

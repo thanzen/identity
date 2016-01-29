@@ -1,46 +1,37 @@
 "use strict";
-var EventEmitter = (function () {
-    function EventEmitter() {
+class EventEmitter {
+    constructor() {
         this.registry = {};
     }
-    EventEmitter.prototype.emit = function (name) {
-        var args = [];
-        for (var _i = 1; _i < arguments.length; _i++) {
-            args[_i - 1] = arguments[_i];
-        }
+    emit(name, ...args) {
         if (!this.registry[name])
             return;
-        this.registry[name].forEach(function (x) {
+        this.registry[name].forEach(x => {
             x.apply(null, args);
         });
-    };
-    EventEmitter.prototype.removeListener = function (name, fn) {
+    }
+    removeListener(name, fn) {
         if (!this.registry[name])
             return;
-        this.registry[name] = this.registry[name].filter(function (f) { return f != fn; });
-    };
-    EventEmitter.prototype.addListener = function (name, fn) {
+        this.registry[name] = this.registry[name].filter(f => f != fn);
+    }
+    addListener(name, fn) {
         if (!this.registry[name]) {
             this.registry[name] = [fn];
         }
         else {
             this.registry[name].push(fn);
         }
-    };
-    return EventEmitter;
-}());
+    }
+}
 exports.EventEmitter = EventEmitter;
 var PubSub;
 (function (PubSub) {
     var registry = {};
-    PubSub.Pub = function (name) {
-        var args = [];
-        for (var _i = 1; _i < arguments.length; _i++) {
-            args[_i - 1] = arguments[_i];
-        }
+    PubSub.Pub = function (name, ...args) {
         if (!registry[name])
             return;
-        registry[name].forEach(function (x) {
+        registry[name].forEach(x => {
             x.apply(null, args);
         });
     };

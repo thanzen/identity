@@ -1,10 +1,10 @@
 "use strict";
-exports.interfacePropertyToStringArray = function (property) {
+exports.interfacePropertyToStringArray = (property) => {
     if (!property)
         return [];
     return Object.keys(property);
 };
-exports.interfacePropertyToObjectArray = function (property) {
+exports.interfacePropertyToObjectArray = (property) => {
     var results = [];
     if (!property)
         return [];

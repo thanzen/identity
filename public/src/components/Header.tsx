@@ -2,6 +2,7 @@ import * as React from 'react';
 import BaseComponent from '../BaseComponent'
 import { Link} from 'react-router';
 import { Topbar, CollapsibleNav, Nav, NavItem, Icon, Badge, Dropdown, Form, Input, Button } from 'amazeui-react';
+import context from '../context';
 let formStyle = {
     height: "260px",
     width: "200px",
@@ -48,6 +49,10 @@ let loggedInDropdown = (
 
 export default class Header extends BaseComponent<{}, {}> {
     render() {
+        var btn = <a href={`/login`} >Log in</a>;
+        if (context.isLogedIn) {
+            btn = <a href={`/logout`} >Log out</a>;
+        }
         return (
             <Topbar
                 brand={(<Link to={`/`} style={styles.left} activeClassName="active">Ascend Tec.</Link>) }
@@ -62,7 +67,7 @@ export default class Header extends BaseComponent<{}, {}> {
                         className="am-topbar-right"
                         topbar
                         >
-                        <NavItem><Link to={`/login`} activeClassName="active">Log in</Link></NavItem>
+                        <NavItem>{btn}</NavItem>
                     </Nav>
                 </CollapsibleNav>
             </Topbar>

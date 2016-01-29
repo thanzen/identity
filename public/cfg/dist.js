@@ -5,7 +5,7 @@ var _ = require('lodash');
 var baseConfig = require('./base');
 
 var config = _.merge({
-  entry: path.join(__dirname, '../src/containers/public/main'),
+  entry: path.join(__dirname, '../src/containers/public/main.jsx'),
   cache: false,
 //  devtool: 'sourcemap',
   plugins: [
