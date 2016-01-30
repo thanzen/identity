@@ -1,2 +1,4 @@
 import Home from './Home';
-export {Home}
+import Extractor from './Extractor';
+
+export {Home, Extractor}

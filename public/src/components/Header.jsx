@@ -31,16 +31,20 @@ let loggedInDropdown = (<amazeui_react_1.Dropdown title={[<amazeui_react_1.Icon 
     </amazeui_react_1.Dropdown>);
 class Header extends BaseComponent_1.default {
     render() {
-        var btn = <a href={`/login`}>Log in</a>;
+        var loginOutbtn = null;
+        var registerBtn = null;
         if (context_1.default.isLogedIn) {
-            btn = <a href={`/logout`}>Log out</a>;
+            loginOutbtn = <a href={`/logout`}>Log out</a>;
+        }
+        else {
+            loginOutbtn = <a href={`/login`}>Log in</a>;
+            registerBtn = <amazeui_react_1.NavItem><a href={`/register`}>Register</a></amazeui_react_1.NavItem>;
         }
         return (<amazeui_react_1.Topbar brand={(<react_router_1.Link to={`/`} style={styles.left} activeClassName="active">Ascend Tec.</react_router_1.Link>)} toggleNavKey="nav" inverse fluid>
-
                 <amazeui_react_1.CollapsibleNav eventKey="nav">
-
                     <amazeui_react_1.Nav className="am-topbar-right" topbar>
-                        <amazeui_react_1.NavItem>{btn}</amazeui_react_1.NavItem>
+                        <amazeui_react_1.NavItem>{loginOutbtn}</amazeui_react_1.NavItem>
+                        {registerBtn}
                     </amazeui_react_1.Nav>
                 </amazeui_react_1.CollapsibleNav>
             </amazeui_react_1.Topbar>);

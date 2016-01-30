@@ -1,1 +1,1 @@
-export interface Xpath { path: string, value: string, isSelected?: boolean };
+export interface Xpath { xpath: string, text: string, attribute:string, type:string, isSelected?: boolean };

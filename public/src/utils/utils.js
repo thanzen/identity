@@ -9,7 +9,7 @@ exports.uuid = uuid;
 function indexOf(xpaths = [], xpath) {
     let index = -1;
     for (let i = 0; i < xpaths.length; i++) {
-        if (xpath && xpaths[i].path == xpath.path) {
+        if (xpath && xpaths[i].xpath == xpath.xpath) {
             return i;
         }
     }

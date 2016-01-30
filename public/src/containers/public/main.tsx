@@ -9,9 +9,8 @@ import {
 
 import Index from './Index';
 import Page from './Page';
-import {
-    Home
-} from '../../pages';
+
+import {Home,Extractor} from '../../pages';
 
 import { Store, createStore} from 'redux';
 import {Provider} from 'react-redux';
@@ -28,7 +27,7 @@ const store: Store = createStore(reducers);
 context.store = store;
 
 let baseDir = (document.getElementById('base_dir') as HTMLInputElement).value;
-let email = (document.getElementById('what_h_l_s') as HTMLInputElement).value;
+let email = (document.getElementById('what_h_l_s') as HTMLInputElement).value;//todo:remove
 context.baseDir =baseDir;
 context.setUser("", email);
 
@@ -36,6 +35,7 @@ const routes = (
     <Provider store={store}>
         <Router history={history}>
             <Route path="/" component={Index}>
+                <Route path="/extractor" component={Extractor} />
                 <Route path=":page" component={Page} />
                 <IndexRoute component={Home} />
             </Route>

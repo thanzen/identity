@@ -1,5 +1,4 @@
 import * as React from 'react';
-import PageContainer from '../components/PageContainer';
 import BaseComponent from '../BaseComponent';
 import { AvgGrid, Sticky, ScrollSpyNav, Panel} from 'amazeui-react';
 import {SearchBar} from "../components/extractor";
@@ -41,7 +40,7 @@ class Header extends BaseComponent<Props, {}> {
     render() {
         let {url} = this.props;
         return (
-            <PageContainer>
+            <div>
                 <AvgGrid sm={1} md={1} lg={2}>
                     <li><div style={styles.div}>
                         <br/>
@@ -53,7 +52,7 @@ class Header extends BaseComponent<Props, {}> {
                     <li  ><img className="am-thumbnail" style={styles.img} src={context.baseDir+ "/images/business-intelligence-process.png"} /></li>
                 </AvgGrid>
                 <SearchBar url={url} navUrl="/extractor"/>
-            </PageContainer>
+            </div>
         );
     }
 }

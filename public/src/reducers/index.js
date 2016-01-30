@@ -18,7 +18,7 @@ function getXPaths(state = initialState.xpaths, action) {
 }
 function toggleSelection(state = initialState.xpaths, action) {
     if (action.type == eventType_1.default.TOGGLE_SELECTION) {
-        return state.map(xpath => xpath.path === action.xpath.path ? { path: xpath.path, value: xpath.value, isSelected: !xpath.isSelected } : xpath);
+        return state.map(xpath => xpath.xpath === action.xpath.path ? { xpath: xpath.xpath, text: xpath.text, isSelected: !xpath.isSelected } : xpath);
     }
     return state;
 }

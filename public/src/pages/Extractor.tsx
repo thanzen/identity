@@ -1,13 +1,14 @@
 import * as React from 'react';
 
-import { Home} from '../../pages';
-import {SearchBar, KeyValueTable} from "../../components/extractor";
-import {Xpath} from '../../models/Xpath';
+import { Home} from '../pages';
+// import { PageContainer} from '../../components';
+import {SearchBar, KeyValueTable} from "../components/extractor";
+import {Xpath} from '../models/Xpath';
 import { Button, Grid, Col, Form } from 'amazeui-react';
 const pages = {
     home: Home,
 };
-import BaseComponent from '../../BaseComponent';
+import BaseComponent from '../BaseComponent';
 import { connect } from 'react-redux';
 
 interface Props { params?: any, location?: any, url?: string, xpaths?: Xpath[] }
@@ -28,7 +29,7 @@ function select(state) {
 // Wrap the component to inject dispatch and state into it
 
 
-class Page extends BaseComponent<Props, {}> {
+class Extractor extends BaseComponent<Props, {}> {
     render() {
         const page = this.props.params.page;
         const {query} = this.props.location;
@@ -41,9 +42,11 @@ class Page extends BaseComponent<Props, {}> {
         }
         return (
             <div>
-404
+                <SearchBar url={this.props.url} navUrl=""/>
+                <Button amStyle="primary" radius onClick={() => { history.replaceState(null, "/"); } } style={styles.submitBtn}>Save</Button>
+                <KeyValueTable data={this.props.xpaths}/>
             </div>
         );
     }
 }
-export default connect(select)(Page)
+export default connect(select)(Extractor)

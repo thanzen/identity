@@ -10,7 +10,7 @@ export function uuid():string{
 export function indexOf(xpaths: Xpath[] = [], xpath: Xpath) {
     let index = -1;
     for (let i = 0; i < xpaths.length; i++) {
-        if (xpath && xpaths[i].path == xpath.path) {
+        if (xpath && xpaths[i].xpath == xpath.xpath) {
             return i;
         }
     }

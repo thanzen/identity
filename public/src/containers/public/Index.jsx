@@ -9,7 +9,6 @@ class Index extends BaseComponent_1.default {
         <div className="adm-main">
           {this.props.children}
         </div>
-
       </div>);
     }
 }

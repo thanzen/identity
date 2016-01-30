@@ -21,6 +21,7 @@ context_1.default.setUser("", email);
 const routes = (<react_redux_1.Provider store={store}>
         <react_router_1.Router history={history_1.default}>
             <react_router_1.Route path="/" component={Index_1.default}>
+                <react_router_1.Route path="/extractor" component={pages_1.Extractor}/>
                 <react_router_1.Route path=":page" component={Page_1.default}/>
                 <react_router_1.IndexRoute component={pages_1.Home}/>
             </react_router_1.Route>

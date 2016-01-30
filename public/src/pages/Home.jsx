@@ -1,6 +1,5 @@
 "use strict";
 const React = require('react');
-const PageContainer_1 = require('../components/PageContainer');
 const BaseComponent_1 = require('../BaseComponent');
 const amazeui_react_1 = require('amazeui-react');
 const extractor_1 = require("../components/extractor");
@@ -37,7 +36,7 @@ function select(state) {
 class Header extends BaseComponent_1.default {
     render() {
         let { url } = this.props;
-        return (<PageContainer_1.default>
+        return (<div>
                 <amazeui_react_1.AvgGrid sm={1} md={1} lg={2}>
                     <li><div style={styles.div}>
                         <br />
@@ -49,7 +48,7 @@ class Header extends BaseComponent_1.default {
                     <li><img className="am-thumbnail" style={styles.img} src={context_1.default.baseDir + "/images/business-intelligence-process.png"}/></li>
                 </amazeui_react_1.AvgGrid>
                 <extractor_1.SearchBar url={url} navUrl="/extractor"/>
-            </PageContainer_1.default>);
+            </div>);
     }
 }
 Object.defineProperty(exports, "__esModule", { value: true });

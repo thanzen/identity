@@ -16,8 +16,8 @@ import '../node_modules/amazeui/dist/css/amazeui.css';
 
 // components
 import {
-    Header,
-    PageContainer
+    Header
+
 } from '../components';
 import {
     Home
@@ -51,7 +51,6 @@ var App = React.createClass({
     },
 });
 
-Home.setBaseDir(baseDir);
 
 const Page = React.createClass({
     render() {
@@ -65,9 +64,9 @@ const Page = React.createClass({
             );
         }
         return (
-            <PageContainer>
+            <div>
                 404
-            </PageContainer>
+            </div>
         );
     }
 });

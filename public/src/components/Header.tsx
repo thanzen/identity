@@ -49,9 +49,13 @@ let loggedInDropdown = (
 
 export default class Header extends BaseComponent<{}, {}> {
     render() {
-        var btn = <a href={`/login`} >Log in</a>;
+        var loginOutbtn = null;
+        var registerBtn = null;
         if (context.isLogedIn) {
-            btn = <a href={`/logout`} >Log out</a>;
+            loginOutbtn = <a href={`/logout`} >Log out</a>;
+        }else{
+          loginOutbtn =<a href={`/login`} >Log in</a>;
+          registerBtn =  <NavItem><a href={`/register`} >Register</a></NavItem>
         }
         return (
             <Topbar
@@ -60,14 +64,13 @@ export default class Header extends BaseComponent<{}, {}> {
                 inverse
                 fluid
                 >
-
                 <CollapsibleNav eventKey="nav">
-
                     <Nav
                         className="am-topbar-right"
                         topbar
                         >
-                        <NavItem>{btn}</NavItem>
+                        <NavItem>{loginOutbtn}</NavItem>
+                        {registerBtn}
                     </Nav>
                 </CollapsibleNav>
             </Topbar>
