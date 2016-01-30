@@ -1,6 +1,8 @@
 "use strict";
 const React = require('react');
 const pages_1 = require('../../pages');
+const react_router_1 = require('react-router');
+require('./Page.css');
 const pages = {
     home: pages_1.Home,
 };
@@ -26,7 +28,14 @@ class Page extends BaseComponent_1.default {
             return React.createElement(pages[page], {});
         }
         return (<div>
-404
+                <div className={"wrap_404"}>
+                    <div className={"logo_404"}>
+                  404
+                        <div className={"sub_404"}>
+                            <p><react_router_1.Link to="/">Go Back to Home</react_router_1.Link></p>
+                        </div>
+                    </div>
+                </div>
             </div>);
     }
 }

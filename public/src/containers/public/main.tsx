@@ -23,6 +23,7 @@ import '../../../node_modules/amazeui/dist/css/amazeui.css';
 import '../../styles/App.css';
 
 
+
 const store: Store = createStore(reducers);
 context.store = store;
 
@@ -36,8 +37,8 @@ const routes = (
         <Router history={history}>
             <Route path="/" component={Index}>
                 <Route path="/extractor" component={Extractor} />
-                <Route path=":page" component={Page} />
                 <IndexRoute component={Home} />
+                <Route  path="*" component={ Page } />
             </Route>
         </Router>
     </Provider>

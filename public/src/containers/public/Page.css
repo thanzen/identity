@@ -1,0 +1,19 @@
+.wrap_404{
+	margin:0 auto;
+	width:100%;
+}
+.logo_404{
+	text-align:center;
+}
+.logo_404 p span{
+	color:lightgreen;
+}
+.sub_404 a{
+	color:white;
+	background:rgba(0,0,0,0.3);
+	text-decoration:none;
+	padding:5px 10px;
+	font-size:13px;
+	font-family: arial, serif;
+	font-weight:bold;
+}
