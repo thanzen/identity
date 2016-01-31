@@ -4,7 +4,8 @@ const eventType_1 = require('../eventType');
 let initialState = {
     xpaths: [],
     url: "",
-    selectedXpaths: []
+    isValidUrl: false,
+    isExtracting: false
 };
 function getXPaths(state = initialState.xpaths, action) {
     switch (action.type) {
@@ -35,9 +36,23 @@ function changeUrl(state = initialState.url, action) {
     }
     return state;
 }
+function validUrl(state = initialState.isValidUrl, action) {
+    if (action.type == eventType_1.default.VALID_URL) {
+        return action.isValidUrl;
+    }
+    return state;
+}
+function processExtracting(state = initialState.isExtracting, action) {
+    if (action.type == eventType_1.default.EXTRACTING) {
+        return action.isExtracting;
+    }
+    return state;
+}
 const reducers = redux_1.combineReducers({
     xpaths: getXPaths,
-    url: changeUrl
+    url: changeUrl,
+    isValidUrl: validUrl,
+    isExtracting: processExtracting
 });
 Object.defineProperty(exports, "__esModule", { value: true });
 exports.default = reducers;

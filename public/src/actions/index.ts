@@ -1,6 +1,8 @@
 import eventType from '../eventType';
 import context from '../context';
 import {Xpath} from '../models/Xpath';
+const regexp = /(ftp|http|https):\/\/(\w+:{0,1}\w*@)?(\S+)(:[0-9]+)?(\/|\/([\w#!:.?+=&%@!\-\/]))?/;
+
 
 var EventType = {
     URL_CHANGE: "URL_CHANGE",
@@ -22,6 +24,7 @@ export function submitExtractRequest(url: string) {
     //     //document.body.innerHTML = body
     //      console.log(body);
     //   });
+    context.store.dispatch({ type: eventType.EXTRACTING, isExtracting: true });
     return fetch('//52.35.87.105:8888/url_enter', {
         method: 'post',
         // headers: {
@@ -35,8 +38,10 @@ export function submitExtractRequest(url: string) {
     }).then(function(response) {
         return response.json();
     }).then(function(data) {
+        context.store.dispatch({ type: eventType.EXTRACTING, isExtracting: false });
         context.store.dispatch({ type: eventType.GET_EXTRACT_REQUEST, data: data });
     }).catch(function(reason) {
+        context.store.dispatch({ type: eventType.EXTRACTING, isExtracting: false });
         context.store.dispatch({ type: eventType.GET_EXTRACT_REQUEST, data: [] });
         console.log(reason); // Error!
     });
@@ -45,6 +50,8 @@ export function submitExtractRequest(url: string) {
 
 export function changeUrl(url: string) {
     context.store.dispatch({ type: eventType.URL_CHANGE, url: url });
+    let isValidUrl = regexp.test(url);
+    context.store.dispatch({ type: eventType.VALID_URL, isValidUrl: isValidUrl });
 }
 
 export function toggleSelection(index: number) {

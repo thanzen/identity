@@ -31,14 +31,16 @@ const styles = {
 
 function select(state) {
     return {
-        url: state.url
+        url: state.url,
+        isValidUrl: state.isValidUrl,
+        isExtracting:state.isExtracting
     }
 }
 
-interface Props { url: string }
+interface Props { url: string,isExtracting:boolean,isValidUrl:boolean }
 class Header extends BaseComponent<Props, {}> {
     render() {
-        let {url} = this.props;
+        let {url,isExtracting,isValidUrl} = this.props;
         return (
             <div>
                 <AvgGrid sm={1} md={1} lg={2}>
@@ -51,7 +53,7 @@ class Header extends BaseComponent<Props, {}> {
                     </li>
                     <li  ><img className="am-thumbnail" style={styles.img} src={context.baseDir+ "/images/business-intelligence-process.png"} /></li>
                 </AvgGrid>
-                <SearchBar url={url} navUrl="/extractor"/>
+                <SearchBar url={url} navUrl="/extractor" isValidUrl={isValidUrl} isExtracting={isExtracting}/>
             </div>
         );
     }

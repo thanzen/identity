@@ -30,12 +30,14 @@ const styles = {
 };
 function select(state) {
     return {
-        url: state.url
+        url: state.url,
+        isValidUrl: state.isValidUrl,
+        isExtracting: state.isExtracting
     };
 }
 class Header extends BaseComponent_1.default {
     render() {
-        let { url } = this.props;
+        let { url, isExtracting, isValidUrl } = this.props;
         return (<div>
                 <amazeui_react_1.AvgGrid sm={1} md={1} lg={2}>
                     <li><div style={styles.div}>
@@ -47,7 +49,7 @@ class Header extends BaseComponent_1.default {
                     </li>
                     <li><img className="am-thumbnail" style={styles.img} src={context_1.default.baseDir + "/images/business-intelligence-process.png"}/></li>
                 </amazeui_react_1.AvgGrid>
-                <extractor_1.SearchBar url={url} navUrl="/extractor"/>
+                <extractor_1.SearchBar url={url} navUrl="/extractor" isValidUrl={isValidUrl} isExtracting={isExtracting}/>
             </div>);
     }
 }

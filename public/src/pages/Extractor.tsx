@@ -11,7 +11,7 @@ const pages = {
 import BaseComponent from '../BaseComponent';
 import { connect } from 'react-redux';
 
-interface Props { params?: any, location?: any, url?: string, xpaths?: Xpath[] }
+interface Props { params?: any, location?: any, url?: string, xpaths?: Xpath[],isValidUrl?:boolean, isExtracting?:boolean}
 
 let styles = {
     submitBtn: {
@@ -23,7 +23,9 @@ let styles = {
 function select(state) {
     return {
         xpaths: state.xpaths,
-        url: state.url
+        url: state.url,
+        isValidUrl: state.isValidUrl,
+        isExtracting:state.isExtracting
     }
 }
 // Wrap the component to inject dispatch and state into it
@@ -42,7 +44,7 @@ class Extractor extends BaseComponent<Props, {}> {
         }
         return (
             <div>
-                <SearchBar url={this.props.url} navUrl=""/>
+                <SearchBar url={this.props.url} navUrl=""  isValidUrl={this.props.isValidUrl} isExtracting={this.props.isExtracting}/>
                 <Button amStyle="primary" radius onClick={() => { history.replaceState(null, "/"); } } style={styles.submitBtn}>Save</Button>
                 <KeyValueTable data={this.props.xpaths}/>
             </div>

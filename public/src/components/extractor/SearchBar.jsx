@@ -23,8 +23,14 @@ const styles = {
 function onChange(event) {
     actions_1.changeUrl(event.target.value);
 }
-exports.SearchBar = ({ url, navUrl }) => (<amazeui_react_1.Form inline style={styles.form}>
-            <amazeui_react_1.Input type="input" label="" value={url} onChange={onChange} style={styles.input}/>
-            {'\u00a0'}
-            <amazeui_react_1.Button amStyle="primary" radius onClick={() => { onSubmit(url, navUrl); }}>Get Data</amazeui_react_1.Button>
-        </amazeui_react_1.Form>);
+function getButton(isValidUrl, isExtracting, url, navUrl) {
+    if (isValidUrl && !isExtracting) {
+        return <amazeui_react_1.Button amStyle="primary" radius onClick={() => { onSubmit(url, navUrl); }}>Get Data</amazeui_react_1.Button>;
+    }
+    return <amazeui_react_1.Button amStyle="primary" radius onClick={() => { onSubmit(url, navUrl); }} disabled>Get Data</amazeui_react_1.Button>;
+}
+exports.SearchBar = ({ isValidUrl, isExtracting, url, navUrl }) => (<amazeui_react_1.Form inline style={styles.form}>
+        <amazeui_react_1.Input type="input" label="" value={url} onChange={onChange} style={styles.input}/>
+        {'\u00a0'}
+        {getButton(isValidUrl, isExtracting, url, navUrl)}
+    </amazeui_react_1.Form>);

@@ -16,7 +16,9 @@ let styles = {
 function select(state) {
     return {
         xpaths: state.xpaths,
-        url: state.url
+        url: state.url,
+        isValidUrl: state.isValidUrl,
+        isExtracting: state.isExtracting
     };
 }
 class Extractor extends BaseComponent_1.default {
@@ -28,7 +30,7 @@ class Extractor extends BaseComponent_1.default {
             return React.createElement(pages[page], {});
         }
         return (<div>
-                <extractor_1.SearchBar url={this.props.url} navUrl=""/>
+                <extractor_1.SearchBar url={this.props.url} navUrl="" isValidUrl={this.props.isValidUrl} isExtracting={this.props.isExtracting}/>
                 <amazeui_react_1.Button amStyle="primary" radius onClick={() => { history.replaceState(null, "/"); }} style={styles.submitBtn}>Save</amazeui_react_1.Button>
                 <extractor_1.KeyValueTable data={this.props.xpaths}/>
             </div>);

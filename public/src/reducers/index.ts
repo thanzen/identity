@@ -10,7 +10,8 @@ import {indexOf} from '../utils/utils';
 let initialState = {
     xpaths: [],
     url: "",
-    selectedXpaths: []
+    isValidUrl: false,
+    isExtracting:false
 }
 
 function getXPaths(state: Xpath[] = initialState.xpaths, action) {
@@ -43,6 +44,20 @@ function changeUrl(state: string = initialState.url, action) {
         return action.url;
     }
     return state;
+}
+
+function validUrl(state:boolean = initialState.isValidUrl, action){
+  if(action.type == EventType.VALID_URL){
+    return action.isValidUrl;
+  }
+  return state;
+}
+
+function processExtracting(state:boolean = initialState.isExtracting, action){
+  if(action.type == EventType.EXTRACTING){
+    return action.isExtracting;
+  }
+  return state;
 }
 // function selectTab(state: number = initialState.selectedTab, action) {
 //     if (action.type == EventType.QUILL_SELECT_TAB) {
@@ -132,7 +147,9 @@ function changeUrl(state: string = initialState.url, action) {
 //
 const reducers = combineReducers({
     xpaths: getXPaths,
-    url: changeUrl
+    url: changeUrl,
+    isValidUrl: validUrl,
+    isExtracting:processExtracting
 })
 
 export default reducers
