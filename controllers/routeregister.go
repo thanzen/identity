@@ -6,6 +6,7 @@ import (
 	"gitlab.com/thanzen/identity/controllers/user"
 	"gitlab.com/thanzen/identity/setting"
 	"gitlab.com/thanzen/identity/controllers/experiment"
+	"gitlab.com/thanzen/identity/controllers/api/magic"
 )
 
 func RegisterControllers() {
@@ -26,7 +27,8 @@ func RegisterControllers() {
 	user.RegisterRoutes()
 	userApi.RegisterRoutes()
 
-
+	extractor := &magic.ExtractorController{}
+	beego.Router("/api/extractor/parse", extractor, "get:Parse")
 
 	//experiment
 	exp := new(experiment.ExperimentController)

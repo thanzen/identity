@@ -5,6 +5,7 @@ const react_router_1 = require('react-router');
 require('./Page.css');
 const pages = {
     home: pages_1.Home,
+    extractor: pages_1.Extractor
 };
 const BaseComponent_1 = require('../../BaseComponent');
 const react_redux_1 = require('react-redux');
@@ -16,7 +17,9 @@ let styles = {
 function select(state) {
     return {
         xpaths: state.xpaths,
-        url: state.url
+        url: state.url,
+        isValidUrl: state.isValidUrl,
+        isExtracting: state.isExtracting
     };
 }
 class Page extends BaseComponent_1.default {
@@ -25,7 +28,7 @@ class Page extends BaseComponent_1.default {
         const { query } = this.props.location;
         const breadcrumb = query && query.breadcrumb;
         if (pages[page]) {
-            return React.createElement(pages[page], {});
+            return React.createElement(pages[page], this.props);
         }
         return (<div>
                 <div className={"wrap_404"}>

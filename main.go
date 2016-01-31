@@ -8,6 +8,7 @@ import (
 	"gitlab.com/thanzen/identity/controllers"
 	"gitlab.com/thanzen/identity/services"
 	"gitlab.com/thanzen/identity/setting"
+	"github.com/astaxie/beego/plugins/cors"
 )
 
 func main() {
@@ -26,7 +27,7 @@ func main() {
 	}
 	dbMigrate()
 	beego.Info(beego.BConfig.AppName, setting.APP_VER, setting.AppUrl)
-
+	testOnly();//todo:remove this
 	//dev directory listing
 	if !setting.IsProMode {
 		beego.SetStaticPath("/assets", "static/dist/assets")
@@ -41,6 +42,7 @@ func main() {
 
 	controllers.RegisterControllers()
 
+
 	if beego.BConfig.RunMode == "dev" {
 		//	beego.Router("/test/:tmpl(mail/.*)", new(base.TestRouter))
 	}
@@ -52,4 +54,12 @@ func dbMigrate() {
 		beego.Error(allErrors)
 	}
 
+}
+func testOnly(){
+	beego.InsertFilter("*", beego.BeforeRouter, cors.Allow(&cors.Options{
+		AllowAllOrigins: true,
+		AllowMethods:     []string{"GET", "POST", "PUT", "DELETE", "OPTIONS"},
+		AllowHeaders:     []string{"Origin", "Authorization", "Access-Control-Allow-Origin"},
+		ExposeHeaders:    []string{"Content-Length", "Access-Control-Allow-Origin"},
+	}))
 }

@@ -1,6 +1,6 @@
 import * as React from 'react';
 
-import { Home} from '../../pages';
+import { Home,Extractor} from '../../pages';
 import {SearchBar, KeyValueTable} from "../../components/extractor";
 import {Xpath} from '../../models/Xpath';
 import { Button, Grid, Col, Form } from 'amazeui-react';
@@ -9,6 +9,7 @@ import { Link} from 'react-router';
 import './Page.css';
 const pages = {
     home: Home,
+    extractor:Extractor
 };
 import BaseComponent from '../../BaseComponent';
 import { connect } from 'react-redux';
@@ -26,7 +27,9 @@ let styles = {
 function select(state) {
     return {
         xpaths: state.xpaths,
-        url: state.url
+        url: state.url,
+        isValidUrl: state.isValidUrl,
+        isExtracting:state.isExtracting
     }
 }
 // Wrap the component to inject dispatch and state into it
@@ -39,7 +42,7 @@ class Page extends BaseComponent<Props, {}> {
 
         if (pages[page]) {
             return React.createElement(
-                pages[page], {}
+                pages[page], this.props
             );
         }
 

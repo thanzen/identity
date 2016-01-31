@@ -9,17 +9,16 @@ var EventType = {
     SUBMIT_EXTRACT_REQUEST: "SUBMIT_EXTRACT_REQUEST"
 };
 function submitExtractRequest(url) {
-    var data = new FormData();
-    data.append('page_url', url);
     context_1.default.store.dispatch({ type: eventType_1.default.EXTRACTING, isExtracting: true });
-    return fetch('//52.35.87.105:8888/url_enter', {
-        method: 'post',
-        body: data
-    }).then(function (response) {
+    var pageUrl = "api/extractor/parse?page_url=" + url;
+    var host = 'http://localhost:8080/';
+    return fetch(pageUrl)
+        .then(function (response) {
         return response.json();
     }).then(function (data) {
+        var json = JSON.parse(data);
         context_1.default.store.dispatch({ type: eventType_1.default.EXTRACTING, isExtracting: false });
-        context_1.default.store.dispatch({ type: eventType_1.default.GET_EXTRACT_REQUEST, data: data });
+        context_1.default.store.dispatch({ type: eventType_1.default.GET_EXTRACT_REQUEST, data: json });
     }).catch(function (reason) {
         context_1.default.store.dispatch({ type: eventType_1.default.EXTRACTING, isExtracting: false });
         context_1.default.store.dispatch({ type: eventType_1.default.GET_EXTRACT_REQUEST, data: [] });

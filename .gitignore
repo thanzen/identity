@@ -37,3 +37,4 @@ vwd.webinfo
 *.rej
 static/modules
 public/node_modules
+deploy

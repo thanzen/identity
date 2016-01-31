@@ -13,38 +13,42 @@ var EventType = {
 
 //http://place.qyer.com/poi/V2EJalFiBz9TZg/review/
 export function submitExtractRequest(url: string) {
-
-    var data = new FormData();
-    data.append('page_url', url);
-
-    // fetch('//192.168.0.101:8889/test')
-    //   .then(function(response) {
-    //     console.log(response); // Error!
-    //   }).then(function(body) {
-    //     //document.body.innerHTML = body
-    //      console.log(body);
-    //   });
     context.store.dispatch({ type: eventType.EXTRACTING, isExtracting: true });
-    return fetch('//52.35.87.105:8888/url_enter', {
-        method: 'post',
-        // headers: {
-        //     'Accept': 'application/json'
-        //     // 'Content-Type': 'application/json'
-        // },
-        body: data
-        // JSON.stringify({
-        //     page_url: url,
-        // })
-    }).then(function(response) {
-        return response.json();
-    }).then(function(data) {
-        context.store.dispatch({ type: eventType.EXTRACTING, isExtracting: false });
-        context.store.dispatch({ type: eventType.GET_EXTRACT_REQUEST, data: data });
-    }).catch(function(reason) {
-        context.store.dispatch({ type: eventType.EXTRACTING, isExtracting: false });
-        context.store.dispatch({ type: eventType.GET_EXTRACT_REQUEST, data: [] });
-        console.log(reason); // Error!
-    });
+    var pageUrl = "api/extractor/parse?page_url=" + url;
+    var host = 'http://localhost:8080/' ;
+    return fetch( pageUrl)
+        .then(function(response) {
+            return response.json();
+        }).then(function(data) {
+            var json = JSON.parse(data);
+            context.store.dispatch({ type: eventType.EXTRACTING, isExtracting: false });
+            context.store.dispatch({ type: eventType.GET_EXTRACT_REQUEST, data: json });
+        }).catch(function(reason) {
+            context.store.dispatch({ type: eventType.EXTRACTING, isExtracting: false });
+            context.store.dispatch({ type: eventType.GET_EXTRACT_REQUEST, data: [] });
+            console.log(reason); // Error!
+        });
+    // context.store.dispatch({ type: eventType.EXTRACTING, isExtracting: true });
+    // return fetch('//52.35.87.105:8888/url_enter', {
+    //     method: 'post',
+    //     // headers: {
+    //     //     'Accept': 'application/json'
+    //     //     // 'Content-Type': 'application/json'
+    //     // },
+    //     body: data
+    //     // JSON.stringify({
+    //     //     page_url: url,
+    //     // })
+    // }).then(function(response) {
+    //     return response.json();
+    // }).then(function(data) {
+    //     context.store.dispatch({ type: eventType.EXTRACTING, isExtracting: false });
+    //     context.store.dispatch({ type: eventType.GET_EXTRACT_REQUEST, data: data });
+    // }).catch(function(reason) {
+    //     context.store.dispatch({ type: eventType.EXTRACTING, isExtracting: false });
+    //     context.store.dispatch({ type: eventType.GET_EXTRACT_REQUEST, data: [] });
+    //     console.log(reason); // Error!
+    // });
 }
 
 

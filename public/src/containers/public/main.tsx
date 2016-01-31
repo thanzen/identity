@@ -36,9 +36,8 @@ const routes = (
     <Provider store={store}>
         <Router history={history}>
             <Route path="/" component={Index}>
-                <Route path="/extractor" component={Extractor} />
+                <Route path=":page" component={Page} />
                 <IndexRoute component={Home} />
-                <Route  path="*" component={ Page } />
             </Route>
         </Router>
     </Provider>

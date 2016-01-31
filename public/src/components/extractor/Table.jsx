@@ -7,6 +7,9 @@ function onToggle(index) {
 }
 function toggleAllSelection() {
 }
+
+// c.Ctx.Output.JSON(c.Data["json"], hasIndent, hasEncoding)
+
 function getCheckBox(xpath, index) {
     if (xpath.isSelected)
         return <amazeui_react_1.Input type="checkbox" label="" onClick={() => { onToggle(index); }} checked/>;
