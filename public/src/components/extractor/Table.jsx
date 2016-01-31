@@ -2,25 +2,33 @@
 const React = require('react');
 const amazeui_react_1 = require('amazeui-react');
 const actions_1 = require("../../actions");
-function onToggle(xpath) {
-    actions_1.toggleSelection(xpath);
+function onToggle(index) {
+    actions_1.toggleSelection(index);
 }
 function toggleAllSelection() {
 }
-function getCheckBox(xpath) {
+function getCheckBox(xpath, index) {
     if (xpath.isSelected)
-        return <amazeui_react_1.Input type="checkbox" label="" onClick={() => { onToggle(xpath); }} checked/>;
+        return <amazeui_react_1.Input type="checkbox" label="" onClick={() => { onToggle(index); }} checked/>;
     else
-        return <amazeui_react_1.Input type="checkbox" label="" onClick={() => { onToggle(xpath); }}/>;
+        return <amazeui_react_1.Input type="checkbox" label="" onClick={() => { onToggle(index); }}/>;
+}
+function getRows(data) {
+    let index = 0;
+    return data.reduce((memo, model) => {
+        if (model.type != 'script') {
+            memo.push(<tr>
+                <td>{model.xpath}</td>
+                <td>{model.text}</td>
+                <td>{getCheckBox(model, index)}</td>
+            </tr>);
+        }
+        index++;
+        return memo;
+    }, []);
 }
 const Rows = ({ data }) => (<tbody>
-        {data.map(function (model) {
-    return (<tr>
-                    <td>{model.path}</td>
-                    <td>{model.value}</td>
-                    <td>{getCheckBox(model)}</td>
-                </tr>);
-})}
+        {getRows(data)}
     </tbody>);
 const styles = {
     xpath: {
@@ -33,7 +41,7 @@ const styles = {
         width: "5%"
     }
 };
-exports.KeyValueTable = ({ data }) => (<amazeui_react_1.Table bordered striped hover radius responsive>
+exports.KeyValueTable = ({ data }) => (<amazeui_react_1.Table bordered striped hover radius>
         <thead>
             <tr>
                 <th style={styles.xpath}>XPath</th>

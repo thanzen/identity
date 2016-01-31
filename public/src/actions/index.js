@@ -14,10 +14,11 @@ function submitExtractRequest(url) {
         method: 'post',
         body: data
     }).then(function (response) {
-        var json = response.json();
-        context_1.default.store.dispatch({ type: eventType_1.default.GET_EXTRACT_REQUEST, data: json });
-    }, function (reason) {
-        context_1.default.store.dispatch({ type: eventType_1.default.GET_EXTRACT_REQUEST, data: [{ path: "/1", value: "1" }, { path: "2", value: "2" }] });
+        return response.json();
+    }).then(function (data) {
+        context_1.default.store.dispatch({ type: eventType_1.default.GET_EXTRACT_REQUEST, data: data });
+    }).catch(function (reason) {
+        context_1.default.store.dispatch({ type: eventType_1.default.GET_EXTRACT_REQUEST, data: [] });
         console.log(reason);
     });
 }
@@ -26,7 +27,7 @@ function changeUrl(url) {
     context_1.default.store.dispatch({ type: eventType_1.default.URL_CHANGE, url: url });
 }
 exports.changeUrl = changeUrl;
-function toggleSelection(xpath) {
-    context_1.default.store.dispatch({ type: eventType_1.default.TOGGLE_SELECTION, xpath: xpath });
+function toggleSelection(index) {
+    context_1.default.store.dispatch({ type: eventType_1.default.TOGGLE_SELECTION, index: index });
 }
 exports.toggleSelection = toggleSelection;

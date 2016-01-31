@@ -33,10 +33,11 @@ export function submitExtractRequest(url: string) {
         //     page_url: url,
         // })
     }).then(function(response) {
-        var json = response.json();
-        context.store.dispatch({ type: eventType.GET_EXTRACT_REQUEST, data: json });
-    }, function(reason) {
-        context.store.dispatch({ type: eventType.GET_EXTRACT_REQUEST, data: [{ path: "/1", value: "1" }, { path: "2", value: "2" }] });
+        return response.json();
+    }).then(function(data) {
+        context.store.dispatch({ type: eventType.GET_EXTRACT_REQUEST, data: data });
+    }).catch(function(reason) {
+        context.store.dispatch({ type: eventType.GET_EXTRACT_REQUEST, data: [] });
         console.log(reason); // Error!
     });
 }
@@ -46,6 +47,6 @@ export function changeUrl(url: string) {
     context.store.dispatch({ type: eventType.URL_CHANGE, url: url });
 }
 
-export function toggleSelection(xpath: Xpath) {
-    context.store.dispatch({ type: eventType.TOGGLE_SELECTION, xpath: xpath });
+export function toggleSelection(index: number) {
+    context.store.dispatch({ type: eventType.TOGGLE_SELECTION, index: index });
 }

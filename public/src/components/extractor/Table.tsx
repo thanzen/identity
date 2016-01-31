@@ -5,30 +5,39 @@ import {stringEndsWith} from "../../utils/stringUtils";
 import {Xpath} from '../../models/Xpath';
 import {toggleSelection} from "../../actions";
 
-function onToggle(xpath: Xpath) {
-    toggleSelection(xpath);
+function onToggle(index: number) {
+    toggleSelection(index);
 }
 
 function toggleAllSelection() {
 
 }
-function getCheckBox(xpath: Xpath) {
+function getCheckBox(xpath: Xpath, index: number) {
     if (xpath.isSelected)
-        return <Input type="checkbox" label=""  onClick={() => { onToggle(xpath); } } checked />
+        return <Input type="checkbox" label=""  onClick={() => { onToggle(index); } } checked />
     else
-        return <Input type="checkbox" label=""  onClick={() => { onToggle(xpath); } } />
+        return <Input type="checkbox" label=""  onClick={() => { onToggle(index); } } />
 }
+
+function getRows(data: Xpath[]) {
+    let index: number = 0;
+    return data.reduce((memo, model) => {
+        if (model.type != 'script') {
+            memo.push(<tr>
+                <td>{model.xpath}</td>
+                <td>{model.text}</td>
+                <td>{getCheckBox(model, index) }</td>
+            </tr>)
+        }
+        index++;
+        return memo;
+    }
+        , []);
+}
+
 const Rows = ({data}) => (
     <tbody>
-        {data.map(function(model) {
-            return (
-                <tr>
-                    <td>{model.path}</td>
-                    <td>{model.value}</td>
-                    <td>{getCheckBox(model) }</td>
-                </tr>
-            )
-        }) }
+        {getRows(data) }
     </tbody>
 )
 const styles = {
@@ -43,7 +52,7 @@ const styles = {
     }
 }
 export const KeyValueTable = ({data}) => (
-    <Table bordered striped hover radius responsive>
+    <Table bordered striped hover radius>
         <thead>
             <tr>
                 <th style={styles.xpath}>XPath</th>
