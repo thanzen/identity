@@ -1,22 +1,24 @@
 "use strict";
 const eventType_1 = require('../eventType');
 const context_1 = require('../context');
-const regexp = /(ftp|http|https):\/\/(\w+:{0,1}\w*@)?(\S+)(:[0-9]+)?(\/|\/([\w#!:.?+=&%@!\-\/]))?/;
-var EventType = {
-    URL_CHANGE: "URL_CHANGE",
-    SUBMIT_RESULT: "SUBMIT_RESULT",
-    TOGGLE_SELECTION: "TOGGLE_SELECTION",
-    SUBMIT_EXTRACT_REQUEST: "SUBMIT_EXTRACT_REQUEST"
-};
+const regexp = /^(http[s]?:\/\/){0,1}(www\.){0,1}[a-zA-Z0-9\.\-]+\.[a-zA-Z]{2,5}[\.]{0,1}/;
 function submitExtractRequest(url) {
     context_1.default.store.dispatch({ type: eventType_1.default.EXTRACTING, isExtracting: true });
     var pageUrl = "api/extractor/parse?page_url=" + url;
-    var host = 'http://localhost:8080/';
+    if (context_1.default.isLocalhost) {
+        pageUrl = "//52.35.87.105:8888/url_enter?page_url=" + url;
+    }
     return fetch(pageUrl)
         .then(function (response) {
         return response.json();
     }).then(function (data) {
-        var json = JSON.parse(data);
+        let json = null;
+        if (context_1.default.isLocalhost) {
+            json = data;
+        }
+        else {
+            json = JSON.parse(data);
+        }
         context_1.default.store.dispatch({ type: eventType_1.default.EXTRACTING, isExtracting: false });
         context_1.default.store.dispatch({ type: eventType_1.default.GET_EXTRACT_REQUEST, data: json });
     }).catch(function (reason) {

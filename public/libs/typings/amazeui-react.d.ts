@@ -28,4 +28,7 @@ declare module 'amazeui-react' {
     export var ScrollSpyNav: any;
     export var Form: any;
     export var Input: any;
+    export var Thumbnail: any;
+    export var Image: any;
+
 }

@@ -92,7 +92,7 @@ var (
 
 func Initialize() {
 	var err error
-
+	beego.Info("thisi s is s ")
 	var cac cache.Cache
 	cac, err = cache.NewCache("memory", `{"interval":360}`)
 
@@ -125,6 +125,7 @@ func Initialize() {
 }
 
 func settingCompress() {
+	AppUrl = beego.AppConfig.DefaultString("appurl","")
 	setting, err := compress.LoadJsonConf(CompressConfPath, IsProMode, AppUrl)
 	if err != nil {
 		beego.Error(err)

@@ -7,23 +7,29 @@ function onToggle(index) {
 }
 function toggleAllSelection() {
 }
-
-// c.Ctx.Output.JSON(c.Data["json"], hasIndent, hasEncoding)
-
 function getCheckBox(xpath, index) {
     if (xpath.isSelected)
         return <amazeui_react_1.Input type="checkbox" label="" onClick={() => { onToggle(index); }} checked/>;
     else
         return <amazeui_react_1.Input type="checkbox" label="" onClick={() => { onToggle(index); }}/>;
 }
+function getContent(xpath) {
+    if (xpath.type == 'image') {
+        return <td> <amazeui_react_1.Image width="140" height="140" src={xpath.text}/></td>;
+    }
+    else {
+        return <td>{xpath.text}</td>;
+    }
+}
 function getRows(data) {
     let index = 0;
     return data.reduce((memo, model) => {
         if (model.type != 'script') {
             memo.push(<tr>
-                <td>{model.xpath}</td>
-                <td>{model.text}</td>
                 <td>{getCheckBox(model, index)}</td>
+                <td>{model.xpath}</td>
+                {getContent(model)}
+                <td>{model.attribute}</td>
             </tr>);
         }
         index++;
@@ -35,21 +41,28 @@ const Rows = ({ data }) => (<tbody>
     </tbody>);
 const styles = {
     xpath: {
-        width: "40%"
+        width: "30%"
     },
     value: {
-        width: "55%"
+        width: "40%"
+    },
+    attribute: {
+        width: "25%"
     },
     checkbox: {
         width: "5%"
+    },
+    table: {
+        maxWidth: "100%"
     }
 };
-exports.KeyValueTable = ({ data }) => (<amazeui_react_1.Table bordered striped hover radius>
+exports.KeyValueTable = ({ data }) => (<amazeui_react_1.Table bordered striped hover radius responsive={false} style={styles.table}>
         <thead>
             <tr>
+                <th style={styles.checkbox}></th>
                 <th style={styles.xpath}>XPath</th>
                 <th style={styles.value}>Value</th>
-                <th style={styles.checkbox}></th>
+                <th style={styles.attribute}>Attribute</th>
             </tr>
         </thead>
         <Rows data={data}/>

@@ -17,7 +17,6 @@ func main() {
 	beego.SetViewsPath("views")
 
 	if setting.IsProMode {
-		beego.Info("Product mode enabled")
 		beego.Info(setting.PostgresMigrateConnection)
 		//auto migrate db
 		//todo: we may want to disable this later
@@ -41,7 +40,6 @@ func main() {
 	orm.Debug = true
 
 	controllers.RegisterControllers()
-
 
 	if beego.BConfig.RunMode == "dev" {
 		//	beego.Router("/test/:tmpl(mail/.*)", new(base.TestRouter))

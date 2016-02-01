@@ -10,6 +10,7 @@ function onSubmit(url, navUrl) {
     if (navUrl) {
         history_1.default.replaceState(null, navUrl);
     }
+    return false;
 }
 const styles = {
     input: {
@@ -25,12 +26,12 @@ function onChange(event) {
 }
 function getButton(isValidUrl, isExtracting, url, navUrl) {
     if (isValidUrl && !isExtracting) {
-        return <amazeui_react_1.Button amStyle="primary" radius onClick={() => { onSubmit(url, navUrl); }}>Get Data</amazeui_react_1.Button>;
+        return <amazeui_react_1.Button amStyle="primary" radius type="submit">Get Data</amazeui_react_1.Button>;
     }
-    return <amazeui_react_1.Button amStyle="primary" radius onClick={() => { onSubmit(url, navUrl); }} disabled>Get Data</amazeui_react_1.Button>;
+    return <amazeui_react_1.Button amStyle="primary" radius type="submit" disabled>Get Data</amazeui_react_1.Button>;
 }
-exports.SearchBar = ({ isValidUrl, isExtracting, url, navUrl }) => (<amazeui_react_1.Form inline style={styles.form}>
-        <amazeui_react_1.Input type="input" label="" value={url} onChange={onChange} style={styles.input}/>
+exports.SearchBar = ({ isValidUrl, isExtracting, url, navUrl }) => (<amazeui_react_1.Form inline style={styles.form} onSubmit={(e) => { e.preventDefault(); onSubmit(url, navUrl); }}>
+        <amazeui_react_1.Input type="input" label="" value={url} onChange={onChange} style={styles.input} round icon="search"/>
         {'\u00a0'}
         {getButton(isValidUrl, isExtracting, url, navUrl)}
     </amazeui_react_1.Form>);

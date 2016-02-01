@@ -14,6 +14,7 @@ func RegisterControllers() {
 	mc := new(MainController)
 	beego.Router("/", mc, "get:Index")
 	beego.Router("/index", mc, "get:Index")
+	beego.Router("/extractor", mc, "get:Index")//react-router history route
 
 	// "robot.txt"
 	beego.Router("/robot.txt", &RobotRouter{})

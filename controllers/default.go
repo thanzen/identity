@@ -2,6 +2,8 @@ package controllers
 
 import (
 	"gitlab.com/thanzen/identity/controllers/base"
+	"github.com/astaxie/beego"
+	"gitlab.com/thanzen/identity/setting"
 )
 
 type MainController struct {
@@ -19,5 +21,6 @@ func (c *MainController) Index() {
 	c.Data["Email"] = c.User.Email
 	c.Data["BaseDir"] = "assets"
 	c.TplName = "test.html"
+	beego.BeeLogger.Info(setting.AppUrl)
 
 }

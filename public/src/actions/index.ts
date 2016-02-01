@@ -1,26 +1,25 @@
 import eventType from '../eventType';
 import context from '../context';
 import {Xpath} from '../models/Xpath';
-const regexp = /(ftp|http|https):\/\/(\w+:{0,1}\w*@)?(\S+)(:[0-9]+)?(\/|\/([\w#!:.?+=&%@!\-\/]))?/;
-
-
-var EventType = {
-    URL_CHANGE: "URL_CHANGE",
-    SUBMIT_RESULT: "SUBMIT_RESULT",
-    TOGGLE_SELECTION: "TOGGLE_SELECTION",
-    SUBMIT_EXTRACT_REQUEST: "SUBMIT_EXTRACT_REQUEST"
-};
+const regexp = /^(http[s]?:\/\/){0,1}(www\.){0,1}[a-zA-Z0-9\.\-]+\.[a-zA-Z]{2,5}[\.]{0,1}/;
 
 //http://place.qyer.com/poi/V2EJalFiBz9TZg/review/
 export function submitExtractRequest(url: string) {
     context.store.dispatch({ type: eventType.EXTRACTING, isExtracting: true });
     var pageUrl = "api/extractor/parse?page_url=" + url;
-    var host = 'http://localhost:8080/' ;
-    return fetch( pageUrl)
+    if (context.isLocalhost) {
+        pageUrl = "//52.35.87.105:8888/url_enter?page_url=" + url;
+    }
+    return fetch(pageUrl)
         .then(function(response) {
             return response.json();
         }).then(function(data) {
-            var json = JSON.parse(data);
+            let json = null;
+            if (context.isLocalhost) {
+                json = data
+            } else {
+                json = JSON.parse(data);
+            }
             context.store.dispatch({ type: eventType.EXTRACTING, isExtracting: false });
             context.store.dispatch({ type: eventType.GET_EXTRACT_REQUEST, data: json });
         }).catch(function(reason) {

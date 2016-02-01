@@ -45,11 +45,12 @@ class Header extends BaseComponent_1.default {
                         <span style={styles.h1}>Better use of data, <br /> better success of business</span><br />
                         <span style={styles.p}>We are here to help you obtain data, process data, and analyze data for your needs!
                         </span>
+                        <extractor_1.SearchBar url={url} navUrl="/extractor" isValidUrl={isValidUrl} isExtracting={isExtracting}/>
                     </div>
                     </li>
                     <li><img className="am-thumbnail" style={styles.img} src={context_1.default.baseDir + "/images/business-intelligence-process.png"}/></li>
                 </amazeui_react_1.AvgGrid>
-                <extractor_1.SearchBar url={url} navUrl="/extractor" isValidUrl={isValidUrl} isExtracting={isExtracting}/>
+
             </div>);
     }
 }

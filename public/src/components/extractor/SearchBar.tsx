@@ -4,7 +4,6 @@ import BaseComponent from '../../BaseComponent';
 import { Input, Button, Grid, Col, Form } from 'amazeui-react';
 import {changeUrl, submitExtractRequest} from "../../actions";
 import history from "../../history";
-interface Props { url: string }
 
 function onSubmit(url: string, navUrl: string) {
     if (url) {
@@ -13,6 +12,7 @@ function onSubmit(url: string, navUrl: string) {
     if (navUrl) {
         history.replaceState(null, navUrl);
     }
+    return false;
 }
 
 const styles = {
@@ -28,17 +28,18 @@ const styles = {
 function onChange(event: any) {
     changeUrl(event.target.value);
 }
+
 function getButton(isValidUrl: boolean, isExtracting: boolean, url: string, navUrl: string) {
     if (isValidUrl && !isExtracting) {
-        return <Button amStyle="primary" radius onClick={() => { onSubmit(url, navUrl); } }>Get Data</Button>
+        return <Button amStyle="primary" radius type="submit" >Get Data</Button>
     }
-    return <Button amStyle="primary" radius onClick={() => { onSubmit(url, navUrl); } } disabled>Get Data</Button>;
+    return <Button amStyle="primary" radius type="submit" disabled>Get Data</Button>;
 }
 
-export const SearchBar = ({isValidUrl, isExtracting,url, navUrl}) => (
-    <Form inline  style={styles.form}>
-        <Input type="input" label=""  value={url}  onChange={onChange}  style={styles.input}/>
+export const SearchBar = ({isValidUrl, isExtracting, url, navUrl}) => (
+    <Form inline  style={styles.form} onSubmit={(e) => { e.preventDefault(); onSubmit(url, navUrl); } }>
+        <Input type="input" label=""  value={url}  onChange={onChange}  style={styles.input} round icon="search"/>
         {'\u00a0'}
-        {getButton(isValidUrl, isExtracting,url, navUrl)}
+        {getButton(isValidUrl, isExtracting, url, navUrl) }
     </Form>
 )

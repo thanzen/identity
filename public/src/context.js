@@ -1,5 +1,13 @@
 "use strict";
 class Context {
+    constructor() {
+        if (window.location.hostname.indexOf("localhost") != -1 || window.location.hostname.indexOf("127.0.0.1") != -1) {
+            this._isLocalhost = true;
+        }
+        else {
+            this._isLocalhost = false;
+        }
+    }
     set store(value) {
         this._store = value;
     }
@@ -30,6 +38,9 @@ class Context {
     }
     get user() {
         return this.user;
+    }
+    get isLocalhost() {
+        return this._isLocalhost;
     }
 }
 ;

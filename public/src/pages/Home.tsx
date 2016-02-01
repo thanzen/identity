@@ -49,11 +49,12 @@ class Header extends BaseComponent<Props, {}> {
                         <span style={styles.h1}>Better use of data, <br/> better success of business</span><br/>
                         <span style={styles.p}>We are here to help you obtain data, process data, and analyze data for your needs!
                         </span>
+                        <SearchBar url={url} navUrl="/extractor" isValidUrl={isValidUrl} isExtracting={isExtracting}/>
                     </div>
                     </li>
                     <li  ><img className="am-thumbnail" style={styles.img} src={context.baseDir+ "/images/business-intelligence-process.png"} /></li>
                 </AvgGrid>
-                <SearchBar url={url} navUrl="/extractor" isValidUrl={isValidUrl} isExtracting={isExtracting}/>
+
             </div>
         );
     }
