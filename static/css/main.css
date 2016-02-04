@@ -489,3 +489,61 @@
     -webkit-box-shadow: 1px 0 4px rgba(0, 0, 0, 0.2);
     box-shadow: 1px 0 4px rgba(0, 0, 0, 0.2);
 }
+
+
+.wave-in-out{
+  max-height: 100%;
+  overflow-y: hidden;
+  background: linear-gradient(90deg, #f6248e, #e52054, #964C85, #715F9B, #4876B4, #009ee2, #66c2ce  );
+  background: @io-carmine; /* Old browsers */
+  background: -moz-linear-gradient(-45deg, @io-carmine 0%, @io-pink 100%); /* FF3.6+ */
+  background: -webkit-gradient(linear, left top, right bottom, color-stop(0%,#ff26aa), color-stop(100%,@io-pink)); /* Chrome,Safari4+ */
+  background: -webkit-linear-gradient(-45deg, @io-carmine 0%,@io-pink 100%); /* Chrome10+,Safari5.1+ */
+  background: -o-linear-gradient(-45deg, @io-carmine 0%,@io-pink 100%); /* Opera 11.10+ */
+  background: -ms-linear-gradient(-45deg, @io-carmine 0%,@io-pink 100%); /* IE10+ */
+  background: linear-gradient(135deg, @io-carmine 0%,@io-pink 100%); /* W3C */
+  filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#ff26aa', endColorstr='@io-pink',GradientType=1 ); /* IE6-9 fallback on horizontal gradient */
+  background-size: 1400% 1400%;
+  -webkit-animation: AnimationName 100s ease infinite;
+  -moz-animation: AnimationName 100s ease infinite;
+  -o-animation: AnimationName 100s ease infinite;
+  animation: AnimationName 100s ease infinite;
+}
+
+@-webkit-keyframes BackGroundColorAnimation {
+    0%{background-position:0% 50%}
+    50%{background-position:100% 50%}
+    100%{background-position:0% 50%}
+}
+@-moz-keyframes BackGroundColorAnimation {
+    0%{background-position:0% 50%}
+    50%{background-position:100% 50%}
+    100%{background-position:0% 50%}
+}
+@keyframes BackGroundColorAnimation {
+    0%{background-position:0% 50%}
+    50%{background-position:100% 50%}
+    100%{background-position:0% 50%}
+}
+
+
+@-webkit-keyframes AnimationName {
+    0%{background-position:0% 76%}
+    50%{background-position:100% 25%}
+    100%{background-position:0% 76%}
+}
+@-moz-keyframes AnimationName {
+    0%{background-position:0% 76%}
+    50%{background-position:100% 25%}
+    100%{background-position:0% 76%}
+}
+@-o-keyframes AnimationName {
+    0%{background-position:0% 76%}
+    50%{background-position:100% 25%}
+    100%{background-position:0% 76%}
+}
+@keyframes AnimationName {
+    0%{background-position:0% 76%}
+    50%{background-position:100% 25%}
+    100%{background-position:0% 76%}
+}
