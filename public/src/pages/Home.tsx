@@ -18,7 +18,8 @@ const styles = {
         textAlign: "left"
     },
     img: {
-        backgroundColor: "rgba(100,182,172,0.5)",
+        // backgroundColor: "rgba(100,182,172,0.5)",
+        animationName:"fadeIn",
         border: "0px",
         verticalAlign: "middle",
         width: "80%",
@@ -52,7 +53,7 @@ class Header extends BaseComponent<Props, {}> {
                         <SearchBar url={url} navUrl="/extractor" isValidUrl={isValidUrl} isExtracting={isExtracting}/>
                     </div>
                     </li>
-                    <li  ><img className="am-thumbnail" style={styles.img} src={context.baseDir+ "/images/business-intelligence-process.png"} /></li>
+                    <li  ><img className={"fadeIn"} style={styles.img} src={context.baseDir+ "/images/business-intelligence-process.png"} /></li>
                 </AvgGrid>
 
             </div>

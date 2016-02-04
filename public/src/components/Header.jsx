@@ -40,7 +40,7 @@ class Header extends BaseComponent_1.default {
             loginOutbtn = <a href={`/login`}>Log in</a>;
             registerBtn = <amazeui_react_1.NavItem><a href={`/register`}>Register</a></amazeui_react_1.NavItem>;
         }
-        return (<amazeui_react_1.Topbar brand={(<react_router_1.Link to={`/`} style={styles.left} activeClassName="active">Ascend Tec.</react_router_1.Link>)} toggleNavKey="nav" inverse fluid>
+        return (<amazeui_react_1.Topbar brand={(<react_router_1.Link to={`/`} style={styles.left} activeClassName="active">Ascend Tec.</react_router_1.Link>)} toggleNavKey="nav" inverse fluid className={"wave-in-out"}>
                 <amazeui_react_1.CollapsibleNav eventKey="nav">
                     <amazeui_react_1.Nav className="am-topbar-right" topbar>
                         <amazeui_react_1.NavItem>{loginOutbtn}</amazeui_react_1.NavItem>

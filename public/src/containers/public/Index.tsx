@@ -10,7 +10,7 @@ export default class Index extends BaseComponent<Props, {}> {
         return (
             <div>
                 <Header/>
-                <div>
+                <div className={"none-horizental-scroll"}>
                     {this.props.children}
                 </div>
             </div>

@@ -63,6 +63,7 @@ export default class Header extends BaseComponent<{}, {}> {
                 toggleNavKey="nav"
                 inverse
                 fluid
+                className={"wave-in-out"}
                 >
                 <CollapsibleNav eventKey="nav">
                     <Nav

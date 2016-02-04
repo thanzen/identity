@@ -6,7 +6,7 @@ class Index extends BaseComponent_1.default {
     render() {
         return (<div>
                 <components_1.Header />
-                <div>
+                <div className={"none-horizental-scroll"}>
                     {this.props.children}
                 </div>
             </div>);
