@@ -494,7 +494,7 @@
 .wave-in-out{
   max-height: 100%;
   overflow-y: hidden;
-  background: linear-gradient(90deg, #f6248e, #e52054, #964C85, #715F9B, #4876B4, #009ee2, #66c2ce  );
+  background: linear-gradient(90deg, #7595bf, #9DBEE1, #964C85, #715F9B, #4876B4, #009ee2, #66c2ce  );
   background: @io-carmine; /* Old browsers */
   background: -moz-linear-gradient(-45deg, @io-carmine 0%, @io-pink 100%); /* FF3.6+ */
   background: -webkit-gradient(linear, left top, right bottom, color-stop(0%,#ff26aa), color-stop(100%,@io-pink)); /* Chrome,Safari4+ */
