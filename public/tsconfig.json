@@ -12,7 +12,8 @@
         "removeComments": true,
         "noLib": false,
         "preserveConstEnums": true,
-        "suppressImplicitAnyIndexErrors": true
+        "suppressImplicitAnyIndexErrors": true,
+        "allowJs": true
     },
     "filesGlob": [
         "**/*.ts",
@@ -41,7 +42,6 @@
         "src/components/index.ts",
         "src/context.ts",
         "src/eventType.ts",
-        "src/history.ts",
         "src/models/Xpath.ts",
         "src/pages/index.ts",
         "src/reducers/index.ts",

@@ -3,7 +3,7 @@
 // Definitions by: Petar Paar <https://github.com/pepaar>, Stephen Jelfs <https://github.com/stephenjelfs>
 // Definitions: https://github.com/borisyankov/DefinitelyTyped
 
-/// <reference path="./react.d.ts"/>
+/// <reference path="./react/react.d.ts"/>
 
 declare module FixedDataTable {
     export var version: string;

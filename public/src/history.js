@@ -1,4 +1,2 @@
-"use strict";
-const createBrowserHistory = require('history/lib/createBrowserHistory');
-Object.defineProperty(exports, "__esModule", { value: true });
+import createBrowserHistory from 'history/lib/createBrowserHistory'
 exports.default = createBrowserHistory();
