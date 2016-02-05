@@ -40,7 +40,7 @@ class Header extends BaseComponent_1.default {
         let { url, isExtracting, isValidUrl } = this.props;
         return (<div>
                 <amazeui_react_1.AvgGrid sm={1} md={1} lg={2}>
-                    <li><div style={styles.div}>
+                    <li><div style={styles.div}>   
                         <br />
                         <span style={styles.h1}>Better use of data, <br /> better success of business</span><br />
                         <span style={styles.p}>We are here to help you obtain data, process data, and analyze data for your needs!
@@ -49,8 +49,8 @@ class Header extends BaseComponent_1.default {
                     </div>
                     </li>
                     <li><img className={"fadeIn"} style={styles.img} src={context_1.default.baseDir + "/images/business-intelligence-process.png"}/></li>
-                </amazeui_react_1.AvgGrid>
-
+                </amazeui_react_1.AvgGrid> 
+                 
             </div>);
     }
 }

@@ -28,6 +28,7 @@
         "libs/typings/es6-promise.d.ts",
         "libs/typings/fixed-data-table.d.ts",
         "libs/typings/react-bootstrap.d.ts",
+        "libs/typings/react-loader.d.ts",
         "libs/typings/react/classnames.d.ts",
         "libs/typings/react/history.d.ts",
         "libs/typings/react/react-addons-update.d.ts",

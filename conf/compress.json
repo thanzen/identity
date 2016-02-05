@@ -11,9 +11,7 @@
                     "jquery.min.js",
                     "jquery.extend.js",
                     "bootstrap.js",
-                    "lib.min.js",
-                    "prettify.js",
-                    "jStorage.js"
+                    "prettify.js"
                 ],
                 "SkipFiles": [
                     "jquery.min.js",

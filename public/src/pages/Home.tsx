@@ -45,7 +45,7 @@ class Header extends BaseComponent<Props, {}> {
         return (
             <div>
                 <AvgGrid sm={1} md={1} lg={2}>
-                    <li><div style={styles.div}>
+                    <li><div style={styles.div}>   
                         <br/>
                         <span style={styles.h1}>Better use of data, <br/> better success of business</span><br/>
                         <span style={styles.p}>We are here to help you obtain data, process data, and analyze data for your needs!
@@ -54,8 +54,8 @@ class Header extends BaseComponent<Props, {}> {
                     </div>
                     </li>
                     <li  ><img className={"fadeIn"} style={styles.img} src={context.baseDir+ "/images/business-intelligence-process.png"} /></li>
-                </AvgGrid>
-
+                </AvgGrid> 
+                 
             </div>
         );
     }
