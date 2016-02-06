@@ -23,9 +23,6 @@ const styles = {
         verticalAlign: "middle",
         width: "80%",
         height: "80%"
-    },
-    div: {
-        marginLeft: "15%"
     }
 };
 function select(state) {
@@ -38,20 +35,17 @@ function select(state) {
 class Header extends BaseComponent_1.default {
     render() {
         let { url, isExtracting, isValidUrl } = this.props;
-        return (<div>
-                <amazeui_react_1.AvgGrid sm={1} md={1} lg={2}>
-                    <li><div style={styles.div}>   
-                        <br />
-                        <span style={styles.h1}>Better use of data, <br /> better success of business</span><br />
-                        <span style={styles.p}>We are here to help you obtain data, process data, and analyze data for your needs!
-                        </span>
-                        <extractor_1.SearchBar url={url} navUrl="/extractor" isValidUrl={isValidUrl} isExtracting={isExtracting}/>
-                    </div>
-                    </li>
-                    <li><img className={"fadeIn"} style={styles.img} src={context_1.default.baseDir + "/images/business-intelligence-process.png"}/></li>
-                </amazeui_react_1.AvgGrid> 
-                 
-            </div>);
+        return (<amazeui_react_1.Grid className="doc-g">
+                <amazeui_react_1.Col sm={12} md={6} lg={5} lgOffset={1}>
+                    <span style={styles.h1}>Better use of data, <br /> better success of business</span><br />
+                    <span style={styles.p}>We are here to help you obtain data, process data, and analyze data for your needs!
+                    </span>
+                    <extractor_1.SearchBar url={url} navUrl="/extractor" isValidUrl={isValidUrl} isExtracting={isExtracting}/>
+                </amazeui_react_1.Col>
+                <amazeui_react_1.Col sm={12} md={6} lg={5}>
+                    <img className={"fadeIn"} style={styles.img} src={context_1.default.baseDir + "/images/business-intelligence-process.png"}/>
+                </amazeui_react_1.Col>
+            </amazeui_react_1.Grid>);
     }
 }
 Object.defineProperty(exports, "__esModule", { value: true });

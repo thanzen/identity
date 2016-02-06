@@ -1,7 +1,7 @@
 
 import * as React from 'react';
 import BaseComponent from '../../BaseComponent';
-import { Input, Button, Grid, Col, Form } from 'amazeui-react';
+import { Input, Button, Grid, Col, Form, FormGroup } from 'amazeui-react';
 import {changeUrl, submitExtractRequest} from "../../actions";
 import history from "../../history";
 
@@ -17,7 +17,7 @@ function onSubmit(url: string, navUrl: string) {
 
 const styles = {
     input: {
-        width: "500px"
+        width: "100%"
     },
     form: {
         width: "100%",
@@ -37,7 +37,7 @@ function getButton(isValidUrl: boolean, isExtracting: boolean, url: string, navU
 }
 
 export const SearchBar = ({isValidUrl, isExtracting, url, navUrl}) => (
-    <Form inline  style={styles.form} onSubmit={(e) => { e.preventDefault(); onSubmit(url, navUrl); } }>
+    <Form inline style={styles.form} onSubmit={(e) => { e.preventDefault(); onSubmit(url, navUrl); } } className="searchbar-form">
         <Input type="input" label=""  value={url}  onChange={onChange}  style={styles.input} round icon="search"/>
         {'\u00a0'}
         {getButton(isValidUrl, isExtracting, url, navUrl) }

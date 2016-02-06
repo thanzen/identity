@@ -97,3 +97,6 @@
 
 table  { table-layout:fixed; }
 table  td { overflow: hidden; }
+.searchbar-form .am-form-group{
+    width:80%
+}

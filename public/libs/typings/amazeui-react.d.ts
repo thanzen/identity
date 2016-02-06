@@ -30,5 +30,6 @@ declare module 'amazeui-react' {
     export var Input: any;
     export var Thumbnail: any;
     export var Image: any;
+    export var FormGroup: any;
 
 }

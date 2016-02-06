@@ -14,7 +14,7 @@ function onSubmit(url, navUrl) {
 }
 const styles = {
     input: {
-        width: "500px"
+        width: "100%"
     },
     form: {
         width: "100%",
@@ -30,7 +30,7 @@ function getButton(isValidUrl, isExtracting, url, navUrl) {
     }
     return <amazeui_react_1.Button amStyle="primary" radius type="submit" disabled>Get Data</amazeui_react_1.Button>;
 }
-exports.SearchBar = ({ isValidUrl, isExtracting, url, navUrl }) => (<amazeui_react_1.Form inline style={styles.form} onSubmit={(e) => { e.preventDefault(); onSubmit(url, navUrl); }}>
+exports.SearchBar = ({ isValidUrl, isExtracting, url, navUrl }) => (<amazeui_react_1.Form inline style={styles.form} onSubmit={(e) => { e.preventDefault(); onSubmit(url, navUrl); }} className="searchbar-form">
         <amazeui_react_1.Input type="input" label="" value={url} onChange={onChange} style={styles.input} round icon="search"/>
         {'\u00a0'}
         {getButton(isValidUrl, isExtracting, url, navUrl)}
